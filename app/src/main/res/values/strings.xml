@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Health Areana</string>
+    <string name="app_name">Health Arena</string>
+    <string name="web_server_id">473903871123-si55rm2gslbmh96oafnsluomj70ovki4.apps.googleusercontent.com</string>
+    <!-- Login Screen Resources-->
+    <string name="login_title">Health Arena</string>
+    <string name="sign_in_button">Sign In With Google</string>
+
+
+
+
 </resources>
