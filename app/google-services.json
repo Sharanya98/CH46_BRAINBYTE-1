@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "473903871123",
+    "firebase_url": "https://health-arena.firebaseio.com",
+    "project_id": "health-arena",
+    "storage_bucket": "health-arena.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473903871123:android:99baa245438bf1eecdc966",
+        "android_client_info": {
+          "package_name": "com.brainbyte.healthareana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "473903871123-3us0u47c0iepquon7je2rqgfg6pt70bm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.brainbyte.healthareana",
+            "certificate_hash": "9e7abd72bc924ef3ebf1c9bc352558b1c94552c2"
+          }
+        },
+        {
+          "client_id": "473903871123-ud6kdqu13khei3cfpo9omuob3c4438qg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgcsvK3jYmnH2hBAptU63C7JjbMC_mRFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "473903871123-ud6kdqu13khei3cfpo9omuob3c4438qg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
