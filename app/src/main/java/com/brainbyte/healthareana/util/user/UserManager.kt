@@ -24,8 +24,13 @@ import javax.inject.Singleton
 @Singleton
 class UserManager @Inject constructor (
     private val storage: UserDao,
+    private val googleSignInClient: GoogleSignInClient,
+    private val auth: FirebaseAuth,
     private val userComponentFactory: UserComponent.Factory
     ) {
+
+
+    lateinit var user: User
 
     var userComponent: UserComponent? = null
         private set
@@ -47,14 +52,16 @@ class UserManager @Inject constructor (
         }
     }
 
-    suspend fun loginUser(auth: FirebaseAuth, account: GoogleSignInAccount): Result<User> {
+    suspend fun loginUser(account: GoogleSignInAccount): Result<User> {
+
+        Timber.i("Login called!!")
         firebaseAuthWithGoogle(auth, account.idToken!!)
         delay(2000)
-        return if (auth.currentUser != null) {
 
+        return if (auth.currentUser != null) {
                 if (account.id != null) {
 
-                    val user = User(
+                    user = User(
                         account.id!!,
                         account.displayName,
                         account.email,
@@ -64,15 +71,11 @@ class UserManager @Inject constructor (
                     withContext(Dispatchers.IO) {
                         storage.insertUser(user)
                     }
-
+                    userJustLoggedIn()
                    Success(user)
-
                 } else {
-
                     Timber.e(Exception("Invalid Id Params"))
-
                     Error(Exception("Invalid Id Params"))
-
                 }
             } else {
                 Timber.e(Exception("Firebase Error, Account was unable to Login in!!"))
@@ -80,10 +83,10 @@ class UserManager @Inject constructor (
             }
     }
 
-    fun logout(auth: FirebaseAuth, googleSignInClient: GoogleSignInClient): Result<Boolean> {
+    suspend fun logout(): Result<Boolean> {
+        Timber.i("Logout called!!")
         //Firebase signOut
         auth.signOut()
-
         var result: Result<Boolean> = Error(Exception("Function not Executed!!"))
 
         //Google SignOut
@@ -93,13 +96,21 @@ class UserManager @Inject constructor (
             }
         }
 
+        delay(1000)
+
+        if(result is Success) {
+            userComponent = null
+        }
+
         return result
     }
 
     private fun firebaseAuthWithGoogle (auth: FirebaseAuth, id: String) {
-        //Getting Sign In Credential from google sign in api
+
+        // Getting Sign In Credential from google sign in api
         val credential = GoogleAuthProvider.getCredential(id, null)
-//         Sign User into firebase
+
+        // Sign User into firebase
          auth.signInWithCredential(credential)
             .addOnCompleteListener {
                 if(it.isSuccessful) {

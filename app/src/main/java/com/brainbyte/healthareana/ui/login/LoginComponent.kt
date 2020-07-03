@@ -1,8 +1,9 @@
 package com.brainbyte.healthareana.ui.login
 
+import com.brainbyte.healthareana.di.ActivityScope
 import dagger.Subcomponent
 
-
+@ActivityScope
 @Subcomponent
 interface LoginComponent {
 
@@ -12,5 +13,4 @@ interface LoginComponent {
     }
 
     fun inject(fragmentLogin: FragmentLogin)
-    
 }

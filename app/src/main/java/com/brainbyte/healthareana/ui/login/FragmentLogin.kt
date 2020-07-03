@@ -28,9 +28,8 @@ class FragmentLogin : Fragment() {
 
     private lateinit var loginComponent: LoginComponent
 
-    private lateinit var googleSignInClient: GoogleSignInClient
-
-    private lateinit var auth: FirebaseAuth
+    @Inject
+    lateinit var googleSignInClient: GoogleSignInClient
 
     private val RC_SIGN_IN = 9001
 
@@ -41,17 +40,6 @@ class FragmentLogin : Fragment() {
     ): View? {
 
         val binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
-
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestId()
-            .requestIdToken(resources.getString(R.string.web_server_id))
-            .requestEmail()
-            .requestProfile()
-            .build()
-
-        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
-
-        auth = FirebaseAuth.getInstance()
 
         viewModel.status.observe(viewLifecycleOwner) {
             when (it) {
@@ -123,7 +111,7 @@ class FragmentLogin : Fragment() {
                 val account = task.getResult(ApiException::class.java)
                 Timber.d("account details : ${account?.displayName}")
                 account?.let {
-                    viewModel.loginInUser(auth, it)
+                    viewModel.loginInUser(it)
                 }
 
             } catch (e: ApiException) {

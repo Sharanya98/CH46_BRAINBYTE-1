@@ -7,13 +7,17 @@ import com.google.firebase.auth.FirebaseAuth
 import timber.log.Timber
 import javax.inject.Inject
 
-class UserDataRepository @Inject constructor (
-    private val userManager: UserManager
-) {
+@LoggedUserScope
+class UserDataRepository @Inject constructor (private val userManager: UserManager) {
 
-    suspend fun loginInUser(auth: FirebaseAuth, account: GoogleSignInAccount): Result<User> {
-        Timber.d("In User Data Repository")
-        return userManager.loginUser(auth, account)
+    val user: User
+        get() = userManager.user
+
+
+    fun loadUserDataToFirebase () {
+
+
+
     }
 
 }
