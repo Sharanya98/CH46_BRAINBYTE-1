@@ -21,15 +21,5 @@ class FragmentSplash : Fragment() {
     }
 
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
 
-        val userManager = (requireActivity().application as HealthArenaApplication).appComponent.userManager()
-
-        if(!userManager.isUserLoggedIn()) {
-
-        } else {
-
-        }
-    }
 }
