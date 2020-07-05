@@ -6,16 +6,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
-import com.brainbyte.healthareana.HealthArenaApplication
 import com.brainbyte.healthareana.R
+import com.brainbyte.healthareana.data.local.UserManager
 import com.brainbyte.healthareana.data.model.Result
+import com.brainbyte.healthareana.data.model.Result.Error
+import com.brainbyte.healthareana.data.model.Result.Success
 import com.brainbyte.healthareana.data.model.User
 import com.brainbyte.healthareana.databinding.FragmentLoginBinding
+import com.brainbyte.healthareana.util.USER_SP_KEY
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -23,10 +23,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 class FragmentLogin : Fragment() {
@@ -34,15 +32,18 @@ class FragmentLogin : Fragment() {
     lateinit var googleSignInClient: GoogleSignInClient
     lateinit var auth: FirebaseAuth
     private val RC_SIGN_IN = 9001
-
+    private lateinit var userManager: UserManager
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        context?.let {
+            userManager = UserManager(it.getSharedPreferences(USER_SP_KEY, Context.MODE_PRIVATE))
+        }
+        if (userManager.isUserLoggedIn()) navigateToHome()
 
         val binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
-
         auth = FirebaseAuth.getInstance()
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -52,16 +53,17 @@ class FragmentLogin : Fragment() {
             .requestProfile()
             .build()
 
-        googleSignInClient =  GoogleSignIn.getClient(requireActivity(), gso)
+        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
 
 
-        binding.buttonSignIn.apply {
-            (this.getChildAt(0) as TextView).text = resources.getText(R.string.sign_in_button)
-            setOnClickListener {
-                signIn()
+        binding.apply {
+            buttonSignIn.apply {
+                setOnClickListener {
+                    loginTitle.text = resources.getText(R.string.sign_in_button)
+                    signIn()
+                }
             }
         }
-
         return binding.root
     }
 
@@ -75,19 +77,28 @@ class FragmentLogin : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(RC_SIGN_IN == requestCode) {
+        if (RC_SIGN_IN == requestCode) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
 
             try {
                 val account = task.getResult(ApiException::class.java)
                 Timber.d("account details : ${account?.displayName}")
                 account?.let {
-                    loginUser(it)
+                    val result = loginUser(it)
+                    if (result is Success) {
+                        userManager.saveAccount(result.data)
+                        navigateToHome()
+                    }
+
                 }
 
             } catch (e: ApiException) {
             }
         }
+    }
+
+    private fun navigateToHome() {
+        findNavController().navigate(R.id.fragmentHome)
     }
 
     private fun loginUser(account: GoogleSignInAccount): Result<User> {
@@ -104,21 +115,18 @@ class FragmentLogin : Fragment() {
                     account.email,
                     account.photoUrl.toString()
                 )
-
-                // Here Store element in sharedPref
-
-                Result.Success(user)
+                Success(user)
             } else {
                 Timber.e(Exception("Invalid Id Params"))
-                Result.Error(Exception("Invalid Id Params"))
+                Error(Exception("Invalid Id Params"))
             }
         } else {
             Timber.e(Exception("Firebase Error, Account was unable to Login in!!"))
-            Result.Error(Exception("Firebase Error, Account was unable to Login in!!"))
+            Error(Exception("Firebase Error, Account was unable to Login in!!"))
         }
     }
 
-    private fun firebaseAuthWithGoogle (auth: FirebaseAuth, id: String) {
+    private fun firebaseAuthWithGoogle(auth: FirebaseAuth, id: String) {
 
         // Getting Sign In Credential from google sign in api
         val credential = GoogleAuthProvider.getCredential(id, null)
@@ -126,7 +134,7 @@ class FragmentLogin : Fragment() {
         // Sign User into firebase
         auth.signInWithCredential(credential)
             .addOnCompleteListener {
-                if(it.isSuccessful) {
+                if (it.isSuccessful) {
                     val user = auth.currentUser
                     Timber.d("User name : ${user?.displayName}")
                 } else {
@@ -140,12 +148,12 @@ class FragmentLogin : Fragment() {
         Timber.i("Logout called!!")
         //Firebase signOut
         auth.signOut()
-        var result: Result<Boolean> = Result.Error(Exception("Function not Executed!!"))
+        var result: Result<Boolean> = Error(Exception("Function not Executed!!"))
 
         //Google SignOut
         googleSignInClient.signOut().addOnCompleteListener {
             if (it.isSuccessful) {
-                result = Result.Success(true)
+                result = Success(true)
             }
         }
         runBlocking { delay(1000) }
