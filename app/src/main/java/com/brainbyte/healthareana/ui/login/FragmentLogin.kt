@@ -1,13 +1,22 @@
 package com.brainbyte.healthareana.ui.login
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.animation.doOnEnd
+import androidx.core.animation.doOnStart
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.transition.ChangeBounds
+import androidx.transition.Transition
+import androidx.transition.TransitionManager
 import com.brainbyte.healthareana.R
 import com.brainbyte.healthareana.data.local.UserManager
 import com.brainbyte.healthareana.data.model.Result
@@ -33,6 +42,7 @@ class FragmentLogin : Fragment() {
     lateinit var auth: FirebaseAuth
     private val RC_SIGN_IN = 9001
     private lateinit var userManager: UserManager
+    private lateinit var binding: FragmentLoginBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,7 +53,7 @@ class FragmentLogin : Fragment() {
         }
         if (userManager.isUserLoggedIn()) navigateToHome()
 
-        val binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
+        binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
         auth = FirebaseAuth.getInstance()
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -58,15 +68,80 @@ class FragmentLogin : Fragment() {
 
         binding.apply {
             buttonSignIn.apply {
-                setOnClickListener {
-                    loginTitle.text = resources.getText(R.string.sign_in_button)
-                    signIn()
-                }
+                setOnClickListener { signIn() }
             }
+            appIcon.setOnClickListener { animateCircleRevel() }
         }
         return binding.root
     }
 
+    private fun animateCircleRevel() {
+        with(binding.circularRevelView) {
+            val cx = width / 2
+            val cy = height / 2
+            val finalRadius = kotlin.math.hypot(cx.toDouble(), cy.toDouble()).toFloat()
+            android.view.ViewAnimationUtils.createCircularReveal(
+                binding.circularRevelView,
+                cx,
+                cy,
+                0f,
+                finalRadius
+            )
+                .apply {
+                    duration = ANIMATION_DURATION
+                    interpolator = android.view.animation.AccelerateInterpolator()
+                    doOnStart { visibility = android.view.View.VISIBLE }
+                    doOnEnd { animateMoveIcon() }
+                    start()
+                }
+        }
+
+    }
+
+    private fun animateMoveIcon() {
+        val constraintSet = ConstraintSet().apply {
+            clone(binding.root)
+            clear(R.id.app_icon, ConstraintSet.BOTTOM)
+        }
+        val transition = ChangeBounds().apply {
+            duration = ANIMATION_DURATION
+            addListener(object : Transition.TransitionListener {
+                override fun onTransitionEnd(transition: Transition) = showAppName()
+                override fun onTransitionResume(transition: Transition) = Unit
+                override fun onTransitionPause(transition: Transition) = Unit
+                override fun onTransitionCancel(transition: Transition) = Unit
+                override fun onTransitionStart(transition: Transition) = Unit
+            })
+        }
+        TransitionManager.beginDelayedTransition(binding.root, transition)
+        constraintSet.applyTo(binding.root)
+    }
+
+    private fun showAppName() {
+        val titleAnimation = with(binding.titleTextView){
+            ObjectAnimator.ofFloat(this, View.ALPHA, 0f, 1f).apply {
+                doOnStart { visibility = View.VISIBLE }
+            }
+        }
+
+        val hintAnimation = with(binding.loginHintTextView) {
+            ObjectAnimator.ofFloat(this, View.ALPHA, 0f, 1f).apply {
+                doOnStart { visibility = View.VISIBLE }
+            }
+        }
+        val buttonAnimation = with(binding.buttonSignIn) {
+            ObjectAnimator.ofFloat(this, View.ALPHA, 0f, 1f).apply {
+                doOnStart { visibility = View.VISIBLE }
+            }
+        }
+        AnimatorSet().apply {
+            duration = ANIMATION_DURATION
+            playTogether(
+                titleAnimation, hintAnimation, buttonAnimation
+            )
+            start()
+        }
+    }
 
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
@@ -160,4 +235,7 @@ class FragmentLogin : Fragment() {
         return result
     }
 
+    private companion object {
+        const val ANIMATION_DURATION = 2000L
+    }
 }
