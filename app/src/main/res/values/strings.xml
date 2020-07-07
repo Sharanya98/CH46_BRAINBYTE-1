@@ -5,6 +5,7 @@
     <string name="login_title">Health Arena</string>
     <string name="sign_in_button">Sign In With Google</string>
     <string name="login_in_with_google">Login in with Goolge</string>
+    <string name="next">Next</string>
 
 
 </resources>

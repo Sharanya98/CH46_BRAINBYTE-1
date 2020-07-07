@@ -11,13 +11,32 @@
         android:label="FragmentLogin"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_fragmentLogin_to_fragmentHome"
-            app:destination="@id/fragmentHome" />
+            android:id="@+id/action_fragmentLogin_to_fragmentUserNameSelect"
+            app:destination="@id/fragmentUserNameSelect"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
 
     <fragment
         android:id="@+id/fragmentHome"
         android:name="com.brainbyte.healthareana.ui.home.FragmentHome"
         android:label="FragmentHome"
-        tools:layout="@layout/fragment_base"/>
+        tools:layout="@layout/fragment_base" />
+    <fragment
+        android:id="@+id/fragmentUserNameSelect"
+        android:name="com.brainbyte.healthareana.ui.login.FragmentUserNameSelect"
+        android:label="FragmentUserNameSelect"
+        tools:layout="@layout/fragment_user_name">
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentHome"
+            app:destination="@id/fragmentHome"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
+
+    </fragment>
+
 </navigation>

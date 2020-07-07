@@ -118,7 +118,7 @@ class FragmentLogin : Fragment() {
     }
 
     private fun showAppName() {
-        val titleAnimation = with(binding.titleTextView){
+        val titleAnimation = with(binding.titleTextView) {
             ObjectAnimator.ofFloat(this, View.ALPHA, 0f, 1f).apply {
                 doOnStart { visibility = View.VISIBLE }
             }
@@ -162,7 +162,7 @@ class FragmentLogin : Fragment() {
                     val result = loginUser(it)
                     if (result is Success) {
                         userManager.saveAccount(result.data)
-                        navigateToHome()
+                        findNavController().navigate(FragmentLoginDirections.actionFragmentLoginToFragmentUserNameSelect())
                     }
 
                 }
@@ -172,9 +172,8 @@ class FragmentLogin : Fragment() {
         }
     }
 
-    private fun navigateToHome() {
-        findNavController().navigate(R.id.fragmentHome)
-    }
+    private fun navigateToHome() = findNavController().navigate(R.id.fragmentHome)
+
 
     private fun loginUser(account: GoogleSignInAccount): Result<User> {
 
