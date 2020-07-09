@@ -5,4 +5,7 @@
     <color name="colorPrimary">#2b2c5d</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#6200EE</color>
+
+    <color name="color_gender_female">#F34A38</color>
+    <color name="color_gender_male">#5C86DA</color>
 </resources>

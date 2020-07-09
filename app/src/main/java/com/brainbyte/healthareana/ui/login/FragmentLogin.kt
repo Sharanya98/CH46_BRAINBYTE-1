@@ -38,8 +38,8 @@ import timber.log.Timber
 
 class FragmentLogin : Fragment() {
 
-    lateinit var googleSignInClient: GoogleSignInClient
-    lateinit var auth: FirebaseAuth
+    private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var auth: FirebaseAuth
     private val RC_SIGN_IN = 9001
     private lateinit var userManager: UserManager
     private lateinit var binding: FragmentLoginBinding
@@ -90,7 +90,7 @@ class FragmentLogin : Fragment() {
                 .apply {
                     duration = ANIMATION_DURATION
                     interpolator = android.view.animation.AccelerateInterpolator()
-                    doOnStart { visibility = android.view.View.VISIBLE }
+                    doOnStart { visibility = View.VISIBLE }
                     doOnEnd { animateMoveIcon() }
                     start()
                 }
@@ -172,7 +172,7 @@ class FragmentLogin : Fragment() {
         }
     }
 
-    private fun navigateToHome() = findNavController().navigate(R.id.fragmentHome)
+    private fun navigateToHome() = findNavController().navigate(R.id.fragmentGender)
 
 
     private fun loginUser(account: GoogleSignInAccount): Result<User> {

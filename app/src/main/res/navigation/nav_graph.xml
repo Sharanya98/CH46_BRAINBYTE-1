@@ -36,7 +36,15 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_fragmentUserNameSelect_to_fragmentGender"
+            app:destination="@id/fragmentGender" />
 
     </fragment>
+    <fragment
+        android:id="@+id/fragmentGender"
+        android:name="com.brainbyte.healthareana.ui.gender.FragmentGender"
+        android:label="FragmentGender"
+        tools:layout="@layout/fragment_gender"/>
 
 </navigation>
