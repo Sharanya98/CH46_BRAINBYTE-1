@@ -22,7 +22,7 @@ class FragmentUserNameSelect : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.nextButton.setOnClickListener {
-            findNavController().navigate(FragmentUserNameSelectDirections.actionFragmentLoginToFragmentHome())
+            findNavController().navigate(FragmentUserNameSelectDirections.actionFragmentUserNameSelectToFragmentGender())
         }
     }
 }

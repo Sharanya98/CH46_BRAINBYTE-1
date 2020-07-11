@@ -1,15 +1,18 @@
 package com.brainbyte.healthareana.ui.gender
 
-import android.graphics.drawable.*
+import android.graphics.drawable.Animatable
+import android.graphics.drawable.AnimatedVectorDrawable
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.VectorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContentProviderCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.brainbyte.healthareana.R
@@ -30,10 +33,17 @@ class FragmentGender : Fragment() {
     ): View? {
         binding = FragmentGenderBinding.inflate(layoutInflater, container, false)
 
-        val femaleAnimDrawable = AnimatedVectorDrawableCompat.create(requireContext(), R.drawable.avd_female_to_male_anim)
-        val maleAnimDrawable = AnimatedVectorDrawableCompat.create(requireContext(), R.drawable.avd_male_to_female_anim)
+        val femaleAnimDrawable = AnimatedVectorDrawableCompat.create(
+            requireContext(),
+            R.drawable.avd_female_to_male_anim
+        )
+        val maleAnimDrawable = AnimatedVectorDrawableCompat.create(
+            requireContext(),
+            R.drawable.avd_male_to_female_anim
+        )
 
-        femaleAnimDrawable?.registerAnimationCallback(object : Animatable2Compat.AnimationCallback() {
+        femaleAnimDrawable?.registerAnimationCallback(object :
+            Animatable2Compat.AnimationCallback() {
             override fun onAnimationStart(drawable: Drawable?) {
                 binding.genderChangeButton.visibility = View.GONE
             }
@@ -65,7 +75,12 @@ class FragmentGender : Fragment() {
                 if (isMale) {
 
                     (genderChangeButton.drawable as VectorDrawable)
-                        .setTint(ContextCompat.getColor(requireContext(), R.color.color_gender_male))
+                        .setTint(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.color_gender_male
+                            )
+                        )
 
                     (genderImage.drawable as Animatable).start()
 
@@ -80,7 +95,12 @@ class FragmentGender : Fragment() {
                 } else {
 
                     (genderChangeButton.drawable as VectorDrawable)
-                        .setTint(ContextCompat.getColor(requireContext(), R.color.color_gender_female))
+                        .setTint(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.color_gender_female
+                            )
+                        )
 
                     (genderImage.drawable as Animatable).start()
 
@@ -96,6 +116,13 @@ class FragmentGender : Fragment() {
             }
         }
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.fab.setOnClickListener {
+            findNavController().navigate(FragmentGenderDirections.actionFragmentGenderToFragmentHome())
+        }
     }
 
 }
