@@ -41,9 +41,11 @@
 
     <EditText
         android:id="@+id/user_name_edit_text"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:textAlignment="center"
+        android:hint="@string/edittext_hint"
         android:textColor="@color/colorOnPrimary"
         android:textColorHint="@color/colorOnPrimary"
         app:layout_constraintBottom_toBottomOf="parent"

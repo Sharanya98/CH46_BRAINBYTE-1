@@ -25,11 +25,15 @@
 
 
     <ConstraintSet android:id="@+id/full_home_state">
-        <Constraint android:id="@id/account_icon">
-            <CustomAttribute
-                motion:attributeName="BackgroundColor"
-                motion:customColorValue="#FFFFFF" />
-
+        <Constraint android:id="@id/account_icon"
+            android:layout_marginEnd="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="160dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toTopOf="@id/fragment_home_container"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            motion:layout_constraintVertical_bias="0.101">
             <Layout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,6 +64,24 @@
                 motion:layout_constraintStart_toStartOf="parent"
                 motion:layout_constraintTop_toBottomOf="@id/guideline_top" />
         </Constraint>
+        <Constraint
+            motion:layout_editor_absoluteY="143dp"
+            motion:layout_editor_absoluteX="163dp"
+            android:id="@+id/player_badge" />
+        <Constraint
+            android:layout_height="wrap_content"
+            motion:layout_constraintGuide_percent="0.34"
+            android:layout_width="wrap_content"
+            android:id="@+id/guideline_top" />
+        <Constraint
+            android:layout_height="wrap_content"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="28dp"
+            motion:layout_constraintHorizontal_bias="0.538"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/account_icon"
+            android:id="@+id/player_name" />
 
     </ConstraintSet>
 
@@ -71,11 +93,8 @@
                 motion:layout_constraintBottom_toTopOf="@id/fragment_home_container"
                 motion:layout_constraintEnd_toEndOf="parent"
                 motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintTop_toTopOf="parent" />
-            <CustomAttribute
-                motion:attributeName="BackgroundColor"
-                motion:customColorValue="#9999FF" />
-
+                motion:layout_constraintTop_toTopOf="parent"
+                motion:layout_constraintVertical_bias="0.3"/>
         </Constraint>
 
         <Constraint android:id="@id/fragment_account_container">
@@ -97,6 +116,25 @@
                 motion:layout_constraintStart_toStartOf="parent"
                 motion:layout_constraintTop_toBottomOf="@id/guideline_mid" />
         </Constraint>
+        <Constraint
+            android:layout_height="wrap_content"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            motion:layout_constraintHorizontal_bias="0.498"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/account_icon"
+            android:id="@+id/player_name" />
+        <Constraint
+            motion:layout_constraintVertical_bias="0.307"
+            android:layout_height="wrap_content"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toTopOf="@id/fragment_home_container"
+            motion:layout_constraintHorizontal_bias="0.403"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/player_name"
+            android:id="@+id/player_badge" />
 
     </ConstraintSet>
 

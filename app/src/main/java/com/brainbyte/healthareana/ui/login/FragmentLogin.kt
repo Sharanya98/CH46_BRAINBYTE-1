@@ -128,8 +128,9 @@ class FragmentLogin : Fragment() {
         }
     }
 
-    private fun navigateToHome() = findNavController().navigate(R.id.fragmentGender)
+    private fun navigateToHome() = findNavController().navigate(R.id.fragmentBMI)
 
+    private fun navigateToGender() = findNavController().navigate(R.id.fragmentGender)
 
     private fun loginUser(account: GoogleSignInAccount): Result<User> {
 

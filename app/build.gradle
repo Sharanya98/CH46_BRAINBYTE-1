@@ -89,10 +89,22 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
 
     //Firebase
-    implementation 'com.google.firebase:firebase-analytics:17.4.3'
-    implementation 'com.google.firebase:firebase-auth:19.3.1'
-    implementation 'com.google.android.gms:play-services-auth:18.0.0'
-    implementation 'com.google.firebase:firebase-firestore-ktx:21.4.3'
+    implementation 'com.google.firebase:firebase-analytics:17.4.4'
+    implementation 'com.google.firebase:firebase-auth:19.3.2'
+    implementation 'com.google.android.gms:play-services-auth:18.1.0'
+    implementation 'com.google.firebase:firebase-firestore-ktx:21.5.0'
 
+
+    //Horizontal Ruler
+    implementation 'com.kevalpatel2106:ruler-picker:1.1'
+
+    //speedometer widget
+    implementation 'com.github.anastr:speedviewlib:1.5.2'
+
+    //Lottie -> Animation
+    implementation "com.airbnb.android:lottie:3.4.1"
+
+    //scratchView
+    implementation "com.github.cooltechworks:ScratchView:v1.1"
 
 }

@@ -55,13 +55,23 @@
     <fragment
         android:id="@+id/fragmentSplash"
         android:name="com.brainbyte.healthareana.ui.splash.FragmentSplash"
-        android:label="FragmentSplash">
+        android:label="FragmentSplash"
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_fragmentSplash_to_fragmentLogin"
             app:destination="@id/fragmentLogin" />
         <action
             android:id="@+id/action_fragmentSplash_to_fragmentHome"
             app:destination="@id/fragmentHome" />
+        <action
+            android:id="@+id/action_fragmentSplash_to_fragmentBMI"
+            app:destination="@id/fragmentBMI" />
     </fragment>
+
+    <fragment
+        android:id="@+id/fragmentBMI"
+        android:name="com.brainbyte.healthareana.ui.bmi.FragmentBMI"
+        android:label="FragmentBMI"
+        tools:layout="@layout/fragment_bmi"/>
 
 </navigation>
