@@ -13,7 +13,7 @@
         android:text="@string/bmi_title"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/color_bmi_calculator"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -38,7 +38,7 @@
         android:id="@+id/height_ruler"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@color/color_bmi_calculator"
+        android:background="@color/color_scratch"
         app:indicator_color="@color/colorPrimary"
         app:indicator_interval="14dp"
         app:max_value="250"
@@ -82,7 +82,7 @@
         android:id="@+id/weight_ruler"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@color/color_bmi_calculator"
+        android:background="@color/color_scratch"
         app:indicator_color="@color/colorPrimary"
         app:indicator_interval="8dp"
         app:max_value="150"
@@ -108,12 +108,12 @@
         app:layout_constraintVertical_bias="0.1"
         tools:text="@string/weight_unit"/>
 
-    <com.google.android.material.button.MaterialButton
+    <ImageButton
         android:id="@+id/bmi_submit_button"
         style="@style/RoundedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/bmi_button_text"
+        android:src="@drawable/ic_rounded_arrow_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/weight_display"

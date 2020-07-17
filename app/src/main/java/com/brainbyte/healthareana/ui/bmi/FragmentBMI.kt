@@ -11,12 +11,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.brainbyte.healthareana.R
 import com.brainbyte.healthareana.databinding.BmiCongratsScreenBinding
 import com.brainbyte.healthareana.databinding.BmiResultViewBinding
 import com.brainbyte.healthareana.databinding.FragmentBmiBinding
 import com.brainbyte.healthareana.databinding.TrophyScratchLayoutBinding
+import com.cooltechworks.views.ScratchImageView
+import com.cooltechworks.views.ScratchTextView
 import com.github.anastr.speedviewlib.SpeedTextListener
 import com.github.anastr.speedviewlib.components.Section
 import com.github.anastr.speedviewlib.util.OnSectionChangeListener
@@ -128,19 +131,32 @@ class FragmentBMI : Fragment() {
     private fun showCongratsDialogBox(index: Float) {
         val congratsDialogBuilder = AlertDialog.Builder(requireContext())
         val congratsScreenBinding = BmiCongratsScreenBinding.inflate(layoutInflater)
-
+        var trophy = 0
         congratsScreenBinding.apply {
             coinShowerView.setAnimation("coin_shower.json")
             coinShowerView.repeatCount = 4
-            pointsTextView.text = "100 XP"
-            congratsSuggestion.text = if(index < 18.5) {
-                "Your BMI Follows under Underweight, You should be more cautious."
+           if(index < 18.5) {
+               congratsLogo.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_oops_emoji))
+               congratsTitle.text = "Oops!!"
+               pointsTextView.text = "50 XP"
+               congratsQuote.text = "You need to Work on Yourself to earn a Fit Badge"
+               congratsSuggestion.text =  "Your BMI Follows under Underweight, You should be more cautious."
             } else if(index >= 18.5 && index < 24.9) {
-                "Your BMI Follows under Normal Range, You are very healthy."
+               pointsTextView.text = "100 XP"
+               congratsSuggestion.text =  "Your BMI Follows under Normal Range, You are very healthy."
+               trophy = 1
             } else if(index >= 25.0 && index < 29.9) {
-                "Your BMI Follows under OverWeight, You are not alert towards health."
+               congratsLogo.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_oops_emoji))
+               congratsTitle.text = "Oops!!"
+               pointsTextView.text = "50 XP"
+               congratsQuote.text = "You need to Work on Yourself to earn a Fit Badge"
+               congratsSuggestion.text =  "Your BMI Follows under OverWeight, You are not alert towards health."
             } else {
-                "Your BMI Follows under Obesity, You should be more cautious about your health."
+               congratsLogo.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_oops_emoji))
+               congratsTitle.text = "Oops!!"
+               pointsTextView.text = "30 XP"
+               congratsQuote.text = "You need to Work on Yourself to earn a Fit Badge"
+               congratsSuggestion.text =  "Your BMI Follows under Obesity, You should be more cautious about your health."
             }
 
         }
@@ -152,7 +168,9 @@ class FragmentBMI : Fragment() {
         congratsScreenBinding.coinShowerView.playAnimation()
         congratsScreenBinding.bmiCongratsContinueButton.setOnClickListener {
             congratsDialog.dismiss()
-            showScratchDialogBox()
+            if(trophy == 1) {
+                showScratchDialogBox()
+            }
         }
     }
 
@@ -162,7 +180,17 @@ class FragmentBMI : Fragment() {
         val trophyScratchLayoutBinding = TrophyScratchLayoutBinding.inflate(layoutInflater)
 
         trophyScratchLayoutBinding.apply {
+    
+            scratchView.setRevealListener(object : ScratchImageView.IRevealListener {
+                override fun onRevealed(iv: ScratchImageView?) {
+                    TODO("Not yet implemented")
+                }
 
+                override fun onRevealPercentChangedListener(siv: ScratchImageView?, percent: Float) {
+                   if(percent > 75.0) scratchView.reveal()
+                }
+
+            })
         }
 
         scratchDialogBuilder.setView(trophyScratchLayoutBinding.root)

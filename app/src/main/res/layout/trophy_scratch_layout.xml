@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/bmi_app_logo"
-        android:layout_width="60dp"
-        android:layout_height="48dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/ic_congrats_emoji"
         android:elevation="10dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bmi_result_alert_dialog"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="50dp"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
         app:layout_constraintStart_toStartOf="parent"
