@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentSplash">
+    app:startDestination="@id/addictionOnBoarding">
 
     <fragment
         android:id="@+id/fragmentLogin"
@@ -72,6 +72,43 @@
         android:id="@+id/fragmentBMI"
         android:name="com.brainbyte.healthareana.ui.bmi.FragmentBMI"
         android:label="FragmentBMI"
-        tools:layout="@layout/fragment_bmi"/>
+        tools:layout="@layout/fragment_bmi" />
+    <fragment
+        android:id="@+id/addictionOnBoarding"
+        android:name="com.brainbyte.healthareana.ui.sobriety.AddictionOnBoarding"
+        android:label="AddictionOnBoarding">
+        <action
+            android:id="@+id/action_addictionOnBoarding_to_fragmentAddictionSelection"
+            app:destination="@id/fragmentAddictionSelection" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAddictionSelection"
+        android:name="com.brainbyte.healthareana.ui.sobriety.FragmentAddictionSelection"
+        android:label="FragmentAddictionSelection">
+        <action
+            android:id="@+id/action_fragmentAddictionSelection_to_timeCostFragment"
+            app:destination="@id/timeCostFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/additionDatePicker"
+        android:name="com.brainbyte.healthareana.ui.sobriety.AdditionDatePicker"
+        android:label="AdditionDatePicker" >
+        <action
+            android:id="@+id/action_additionDatePicker_to_fragmentAddictionClock"
+            app:destination="@id/fragmentAddictionClock" />
+    </fragment>
+    <fragment
+        android:id="@+id/timeCostFragment"
+        android:name="com.brainbyte.healthareana.ui.sobriety.TimeCostFragment"
+        android:label="TimeCostFragment">
+        <action
+            android:id="@+id/action_timeCostFragment_to_additionDatePicker"
+            app:destination="@id/additionDatePicker" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAddictionClock"
+        android:name="com.brainbyte.healthareana.ui.sobriety.FragmentAddictionClock"
+        android:label="FragmentAddictionClock" />
 
 </navigation>
