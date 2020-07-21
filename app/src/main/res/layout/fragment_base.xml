@@ -1,49 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     app:layoutDescription="@xml/account_scene">
 
-
-    <ImageView
-        android:id="@+id/account_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
+    <com.jackandphantom.circularprogressbar.CircleProgressbar
+        android:id="@+id/profile_progress_bar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:elevation="8dp"
-        android:src="@drawable/ic_placeholder"
+        app:cpb_backgroundProgressColor="#FFFFFF"
+        app:cpb_foregroundProgressColor="#FFBF67"
+        app:cpb_foregroundProgressWidth="15"
+        app:cpb_roundedCorner="true"
         app:layout_constraintBottom_toTopOf="@id/fragment_home_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/account_icon"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="@android:color/transparent"
+        android:elevation="8dp"
+        android:src="@drawable/ic_placeholder" />
 
     <TextView
         android:id="@+id/player_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorOnPrimary"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/account_icon"
-        tools:text="Baburao Apte" />
+        android:fontFamily="@font/montserrat"
+        android:text="Baburao Apte"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/points_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Points"
+        android:elevation="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/points_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="6000"
+        android:elevation="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/vertical_dash_1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@android:color/transparent"
+        android:elevation="4dp"
+        android:src="@drawable/straight_line"/>
+
+    <TextView
+        android:id="@+id/war_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="War"
+        android:elevation="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/war_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="16"
+        android:elevation="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/vertical_dash_2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@android:color/transparent"
+        android:elevation="4dp"
+        android:src="@drawable/straight_line"/>
+
+    <TextView
+        android:id="@+id/rank_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Rank"
+        android:elevation="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/rank_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="604550"
+        android:elevation="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
 
     <ImageView
         android:id="@+id/player_badge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_crown_graphic"
-        app:layout_constraintBottom_toTopOf="@id/fragment_home_container"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.403"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/player_name"
-        app:layout_constraintVertical_bias="0.6" />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_crown_graphic" />
+
+
+    <ImageView
+        android:id="@+id/player_badge2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_crown_graphic" />
 
     <include
         android:id="@+id/fragment_account_container"
@@ -55,12 +151,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/account_icon" />
 
-
     <include
         android:id="@+id/fragment_home_container"
         layout="@layout/fragment_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

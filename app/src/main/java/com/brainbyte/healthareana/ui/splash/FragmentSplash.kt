@@ -73,7 +73,7 @@ class FragmentSplash : Fragment() {
                     context?.let {
                         val userManager =
                             UserManager(it.getSharedPreferences(USER_SP_KEY, Context.MODE_PRIVATE))
-                        if (userManager.isUserLoggedIn()) findNavController().navigate(R.id.fragmentBMI)
+                        if (userManager.isUserLoggedIn()) findNavController().navigate(R.id.fragmentHome)
                         else findNavController().navigate(R.id.fragmentLogin)
                     }
                 }

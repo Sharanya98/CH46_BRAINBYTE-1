@@ -121,7 +121,7 @@ class FragmentGender : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.fab.setOnClickListener {
-            findNavController().navigate(FragmentGenderDirections.actionFragmentGenderToFragmentHome())
+            findNavController().navigate(FragmentGenderDirections.actionFragmentGenderToFragmentCalendar())
         }
     }
 

@@ -2,6 +2,8 @@ package com.brainbyte.healthareana.ui.bmi
 
 import android.annotation.SuppressLint
 import android.graphics.Color
+import android.graphics.drawable.Animatable
+import android.graphics.drawable.Animatable2
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
@@ -182,12 +184,12 @@ class FragmentBMI : Fragment() {
         trophyScratchLayoutBinding.apply {
     
             scratchView.setRevealListener(object : ScratchImageView.IRevealListener {
+                @RequiresApi(Build.VERSION_CODES.M)
                 override fun onRevealed(iv: ScratchImageView?) {
-                    TODO("Not yet implemented")
                 }
 
                 override fun onRevealPercentChangedListener(siv: ScratchImageView?, percent: Float) {
-                   if(percent > 75.0) scratchView.reveal()
+                   if(percent > 75.0) siv?.reveal()
                 }
 
             })

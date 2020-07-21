@@ -34,6 +34,11 @@ class FragmentCalendar : Fragment() {
             }
         }
 
+
+        binding.fab.setOnClickListener {
+            findNavController().navigate(FragmentCalendarDirections.actionFragmentCalendarToFragmentHome())
+        }
+
         return binding.root
     }
 }

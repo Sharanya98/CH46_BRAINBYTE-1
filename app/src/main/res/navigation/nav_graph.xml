@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/addictionOnBoarding">
+    app:startDestination="@id/fragmentSplash">
 
     <fragment
         android:id="@+id/fragmentLogin"
@@ -24,7 +24,14 @@
         android:id="@+id/fragmentHome"
         android:name="com.brainbyte.healthareana.ui.home.FragmentHome"
         android:label="FragmentHome"
-        tools:layout="@layout/fragment_base" />
+        tools:layout="@layout/fragment_base" >
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentBMI"
+            app:destination="@id/fragmentBMI" />
+        <action
+            android:id="@+id/action_fragmentHome_to_addictionOnBoarding"
+            app:destination="@id/addictionOnBoarding" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentUserNameSelect"
         android:name="com.brainbyte.healthareana.ui.login.FragmentUserNameSelect"
@@ -51,6 +58,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_fragmentGender_to_fragmentCalendar"
+            app:destination="@id/fragmentCalendar" />
     </fragment>
     <fragment
         android:id="@+id/fragmentSplash"
@@ -63,9 +73,6 @@
         <action
             android:id="@+id/action_fragmentSplash_to_fragmentHome"
             app:destination="@id/fragmentHome" />
-        <action
-            android:id="@+id/action_fragmentSplash_to_fragmentBMI"
-            app:destination="@id/fragmentBMI" />
     </fragment>
 
     <fragment
@@ -110,5 +117,13 @@
         android:id="@+id/fragmentAddictionClock"
         android:name="com.brainbyte.healthareana.ui.sobriety.FragmentAddictionClock"
         android:label="FragmentAddictionClock" />
+    <fragment
+        android:id="@+id/fragmentCalendar"
+        android:name="com.brainbyte.healthareana.ui.calendar.FragmentCalendar"
+        android:label="FragmentCalendar" >
+        <action
+            android:id="@+id/action_fragmentCalendar_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+    </fragment>
 
 </navigation>
