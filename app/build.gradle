@@ -6,6 +6,14 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\DevanshuVaidya\\Documents\\projects\\New folder\\health_arena_keystore.jks')
+            storePassword '12345678'
+            keyAlias 'key0'
+            keyPassword '12345678'
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
@@ -17,6 +25,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
         kapt {
             arguments {
                 arg("room.schemaLocation", "$projectDir/schemas")
@@ -71,9 +80,6 @@ dependencies {
     implementation "com.jakewharton.timber:timber:$timber_version"
 
     //persistence -> room
-    implementation "androidx.room:room-runtime:$room_version"
-    implementation "androidx.room:room-ktx:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
 
     //kotlin-coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines"
@@ -83,7 +89,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.4.4'
     implementation 'com.google.firebase:firebase-auth:19.3.2'
     implementation 'com.google.android.gms:play-services-auth:18.1.0'
-    implementation 'com.google.firebase:firebase-firestore-ktx:21.5.0'
 
 
     //Horizontal Ruler
@@ -100,4 +105,11 @@ dependencies {
 
     //circular Progress bar
     implementation "com.jackandphantom.android:circularprogressbar:1.2.0"
+
+    //seek bar
+    implementation 'com.ramotion.fluidslider:fluid-slider:0.3.1'
+
+    //Chart Library
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
 }

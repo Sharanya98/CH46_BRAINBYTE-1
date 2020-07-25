@@ -36,8 +36,8 @@
 
         <com.cooltechworks.views.ScratchImageView
             android:id="@+id/scratch_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:src="@drawable/avd_anim_bmi_badge"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

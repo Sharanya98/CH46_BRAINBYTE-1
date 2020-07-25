@@ -37,6 +37,10 @@ class FragmentHome : Fragment() {
                 soberityGameButton.setOnClickListener {
                     findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToAddictionOnBoarding())
                 }
+
+                stepUpGameButton.setOnClickListener {
+                    findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToFragmentStepUp())
+                }
             }
         }
 

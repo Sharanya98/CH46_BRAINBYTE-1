@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_fragmentHome_to_addictionOnBoarding"
             app:destination="@id/addictionOnBoarding" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentStepUp"
+            app:destination="@id/fragmentStepUp" />
     </fragment>
     <fragment
         android:id="@+id/fragmentUserNameSelect"
@@ -52,15 +55,12 @@
         android:label="FragmentGender"
         tools:layout="@layout/fragment_gender">
         <action
-            android:id="@+id/action_fragmentGender_to_fragmentHome"
-            app:destination="@id/fragmentHome"
+            android:id="@+id/action_fragmentGender_to_fragmentCalendar"
+            app:destination="@id/fragmentCalendar"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_left" />
-        <action
-            android:id="@+id/action_fragmentGender_to_fragmentCalendar"
-            app:destination="@id/fragmentCalendar" />
+            app:popExitAnim="@anim/slide_out_left"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentSplash"
@@ -80,18 +80,22 @@
         android:name="com.brainbyte.healthareana.ui.bmi.FragmentBMI"
         android:label="FragmentBMI"
         tools:layout="@layout/fragment_bmi" />
+
     <fragment
         android:id="@+id/addictionOnBoarding"
         android:name="com.brainbyte.healthareana.ui.sobriety.AddictionOnBoarding"
-        android:label="AddictionOnBoarding">
+        android:label="AddictionOnBoarding"
+        tools:layout="@layout/fragment_addiction_on_board">
         <action
             android:id="@+id/action_addictionOnBoarding_to_fragmentAddictionSelection"
             app:destination="@id/fragmentAddictionSelection" />
     </fragment>
+
     <fragment
         android:id="@+id/fragmentAddictionSelection"
         android:name="com.brainbyte.healthareana.ui.sobriety.FragmentAddictionSelection"
-        android:label="FragmentAddictionSelection">
+        android:label="FragmentAddictionSelection"
+        tools:layout="@layout/fragment_addictions">
         <action
             android:id="@+id/action_fragmentAddictionSelection_to_timeCostFragment"
             app:destination="@id/timeCostFragment" />
@@ -100,7 +104,8 @@
     <fragment
         android:id="@+id/additionDatePicker"
         android:name="com.brainbyte.healthareana.ui.sobriety.AdditionDatePicker"
-        android:label="AdditionDatePicker" >
+        android:label="AdditionDatePicker"
+        tools:layout="@layout/fragment_addiction_clock">
         <action
             android:id="@+id/action_additionDatePicker_to_fragmentAddictionClock"
             app:destination="@id/fragmentAddictionClock" />
@@ -113,6 +118,7 @@
             android:id="@+id/action_timeCostFragment_to_additionDatePicker"
             app:destination="@id/additionDatePicker" />
     </fragment>
+
     <fragment
         android:id="@+id/fragmentAddictionClock"
         android:name="com.brainbyte.healthareana.ui.sobriety.FragmentAddictionClock"
@@ -125,5 +131,19 @@
             android:id="@+id/action_fragmentCalendar_to_fragmentHome"
             app:destination="@id/fragmentHome" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentStepUp"
+        android:name="com.brainbyte.healthareana.ui.step_up.FragmentStepUp"
+        android:label="FragmentStepUp"
+        tools:layout="@layout/fragment_step_up">
+        <action
+            android:id="@+id/action_fragmentStepUp_to_fragmentStepUpDetails"
+            app:destination="@id/fragmentStepUpDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentStepUpDetails"
+        android:name="com.brainbyte.healthareana.ui.step_up.FragmentStepUpDetails"
+        android:label="FragmentStepUpDetails"
+        tools:layout="@layout/fragment_step_up_detail"/>
 
 </navigation>

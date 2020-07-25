@@ -27,8 +27,12 @@
     <style name="RoundedButton" parent="Widget.MaterialComponents.Button">
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialComponents.Button.Rounded</item>
     </style>
-    
-    
+
+    <style name="RoundedButtonRed" parent="Widget.MaterialComponents.Button">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialComponents.Button.Rounded</item>
+        <item name="background">@color/color_step_up</item>
+    </style>
+
     <style name="ShapeAppearanceOverlay.MaterialComponents.Button.Rounded" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopLeft">20dp</item>
@@ -47,4 +51,20 @@
         <item name="cornerSizeTopLeft">50dp</item>
         <item name="cornerSizeTopRight">50dp</item>
     </style>
+
+    <style name="roundedCardViewStepUp" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.StepUp</item>
+        <item name="cardBackgroundColor">#F2B5BA</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MaterialCardView.StepUp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+    </style>
+
+
+
 </resources>

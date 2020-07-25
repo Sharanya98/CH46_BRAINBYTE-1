@@ -78,9 +78,10 @@
 
         <ImageView
             android:id="@+id/coin_image_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_margin="50dp"
+            android:background="@android:color/transparent"
             android:elevation="10dp"
             android:src="@drawable/ic_coins_group"
             app:layout_constraintBottom_toTopOf="@id/points_text_view"
