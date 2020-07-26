@@ -24,7 +24,7 @@
         android:id="@+id/fragmentHome"
         android:name="com.brainbyte.healthareana.ui.home.FragmentHome"
         android:label="FragmentHome"
-        tools:layout="@layout/fragment_base" >
+        tools:layout="@layout/fragment_base">
         <action
             android:id="@+id/action_fragmentHome_to_fragmentBMI"
             app:destination="@id/fragmentBMI" />
@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_fragmentHome_to_fragmentStepUp"
             app:destination="@id/fragmentStepUp" />
+        <action
+            android:id="@+id/action_fragmentHome_to_diseaseOnBoardingFragment"
+            app:destination="@id/diseaseOnBoardingFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentUserNameSelect"
@@ -60,7 +63,7 @@
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_left"/>
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/fragmentSplash"
@@ -126,7 +129,7 @@
     <fragment
         android:id="@+id/fragmentCalendar"
         android:name="com.brainbyte.healthareana.ui.calendar.FragmentCalendar"
-        android:label="FragmentCalendar" >
+        android:label="FragmentCalendar">
         <action
             android:id="@+id/action_fragmentCalendar_to_fragmentHome"
             app:destination="@id/fragmentHome" />
@@ -144,6 +147,30 @@
         android:id="@+id/fragmentStepUpDetails"
         android:name="com.brainbyte.healthareana.ui.step_up.FragmentStepUpDetails"
         android:label="FragmentStepUpDetails"
-        tools:layout="@layout/fragment_step_up_detail"/>
+        tools:layout="@layout/fragment_step_up_detail" />
+    <fragment
+        android:id="@+id/diseasePickerFragment"
+        android:name="com.brainbyte.healthareana.ui.disease.DiseasePickerFragment"
+        android:label="DiseasePickerFragment"
+        tools:layout="@layout/fragment_disease_picker">
+        <action
+            android:id="@+id/action_diseasePickerFragment_to_familyTreeFragment"
+            app:destination="@id/familyTreeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/diseaseOnBoardingFragment"
+        android:name="com.brainbyte.healthareana.ui.disease.DiseaseOnBoardingFragment"
+        android:label="DiseaseOnBoardingFragment"
+        tools:layout="@layout/fragment_disease_on_board">
+        <action
+            android:id="@+id/action_diseaseOnBoardingFragment_to_diseasePickerFragment"
+            app:destination="@id/diseasePickerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/familyTreeFragment"
+        android:name="com.brainbyte.healthareana.ui.disease.FamilyTreeFragment"
+        android:label="FamilyTreeFragment"
+        tools:layout="@layout/fragment_family_tree" />
+
 
 </navigation>

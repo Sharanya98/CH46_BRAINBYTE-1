@@ -41,6 +41,9 @@ class FragmentHome : Fragment() {
                 stepUpGameButton.setOnClickListener {
                     findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToFragmentStepUp())
                 }
+                powerGeneGameButton.setOnClickListener {
+                    findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToDiseaseOnBoardingFragment())
+                }
             }
         }
 

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:text="@string/medical_history_tree"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <TextView
+        android:id="@+id/john_doe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:drawableTop="@drawable/ic_baseline_arrow_forward_24"
+        android:text="John Doe"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/title_text_view"
+        app:layout_constraintStart_toStartOf="@id/title_text_view"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <View
+        android:id="@+id/horizontal_bar_view"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/black"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/john_doe" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawableTop="@drawable/ic_baseline_arrow_forward_24"
+        android:text="Daughter"
+        app:layout_constraintEnd_toStartOf="@id/horizontal_bar_view_2"
+        app:layout_constraintStart_toStartOf="@id/horizontal_bar_view_2"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_bar_view_2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawableTop="@drawable/ic_baseline_arrow_forward_24"
+        android:text="Son"
+        app:layout_constraintEnd_toEndOf="@id/horizontal_bar_view_2"
+        app:layout_constraintStart_toEndOf="@id/horizontal_bar_view_2"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_bar_view_2" />
+
+    <View
+        android:id="@+id/vertical_bar_view"
+        android:layout_width="2dp"
+        android:layout_height="48dp"
+        android:background="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_bar_view" />
+
+    <View
+        android:id="@+id/horizontal_bar_view_2"
+        android:layout_width="128dp"
+        android:layout_height="2dp"
+        android:background="@android:color/black"
+        app:layout_constraintEnd_toEndOf="@id/vertical_bar_view"
+        app:layout_constraintStart_toStartOf="@id/vertical_bar_view"
+        app:layout_constraintTop_toBottomOf="@id/vertical_bar_view" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_baseline_add_24"
+        app:layout_constraintEnd_toEndOf="@id/guideline_left"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_bar_view" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
