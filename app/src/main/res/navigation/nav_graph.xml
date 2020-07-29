@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_fragmentHome_to_diseaseOnBoardingFragment"
             app:destination="@id/diseaseOnBoardingFragment" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentStressOMeter"
+            app:destination="@id/fragmentStressOMeter" />
     </fragment>
     <fragment
         android:id="@+id/fragmentUserNameSelect"
@@ -166,11 +169,63 @@
             android:id="@+id/action_diseaseOnBoardingFragment_to_diseasePickerFragment"
             app:destination="@id/diseasePickerFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/familyTreeFragment"
         android:name="com.brainbyte.healthareana.ui.disease.FamilyTreeFragment"
         android:label="FamilyTreeFragment"
         tools:layout="@layout/fragment_family_tree" />
+
+    <fragment
+        android:id="@+id/fragmentStressOMeter"
+        android:name="com.brainbyte.healthareana.ui.stress_o_meter.FragmentStressOMeter"
+        android:label="FragmentStressOMeter"
+        tools:layout="@layout/fragment_stress_o_meter_start">
+        <action
+            android:id="@+id/action_fragmentStressOMeter_to_fragmentStressOMeterDetail"
+            app:destination="@id/fragmentStressOMeterDetail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentStressOMeterDetail"
+        android:name="com.brainbyte.healthareana.ui.stress_o_meter.FragmentStressOMeterDetail"
+        android:label="FragmentStressOMeterDetail"
+        tools:layout="@layout/fragment_stress_o_meter_detail">
+        <action
+            android:id="@+id/action_fragmentStressOMeterDetail_to_fragmentDownTime"
+            app:destination="@id/fragmentDownTime" />
+        <action
+            android:id="@+id/action_fragmentStressOMeterDetail_to_fragmentStressOMeterAppLimit"
+            app:destination="@id/fragmentStressOMeterAppLimit" />
+        <action
+            android:id="@+id/action_fragmentStressOMeterDetail_to_fragmentStressOMeterDataUsage"
+            app:destination="@id/fragmentStressOMeterDataUsage" />
+        <action
+            android:id="@+id/action_fragmentStressOMeterDetail_to_fragmentStressOMeterMostUsed"
+            app:destination="@id/fragmentStressOMeterMostUsed" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentDownTime"
+        android:name="com.brainbyte.healthareana.ui.stress_o_meter.FragmentDownTime"
+        android:label="FragmentDownTime"
+        tools:layout="@layout/fragment_stress_o_meter_downtime"/>
+
+    <fragment
+        android:id="@+id/fragmentStressOMeterAppLimit"
+        android:name="com.brainbyte.healthareana.ui.stress_o_meter.FragmentAppLimit"
+        android:label="FragmentStressOMeterAppLimit"
+        tools:layout="@layout/fragment_stress_o_meter_app_limit"/>
+    <fragment
+        android:id="@+id/fragmentStressOMeterDataUsage"
+        android:name="com.brainbyte.healthareana.ui.stress_o_meter.FragmentDataUsage"
+        android:label="FragmentStressOMeterDataUsage"
+        tools:layout="@layout/fragment_stress_o_meter_most_used"/>
+    <fragment
+        android:id="@+id/fragmentStressOMeterMostUsed"
+        android:name="com.brainbyte.healthareana.ui.stress_o_meter.FragmentMostUsed"
+        android:label="FragmentStressOMeterMostUsed"
+        tools:layout="@layout/fragment_stress_o_meter_most_used"/>
 
 
 </navigation>

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/down_time_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ShapeAppearanceOverlay.Stress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintVertical_bias="0.1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="27dp"
+            android:layout_marginBottom="27dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_sleep_graphic"
+                android:background="#A5E830"
+                android:drawablePadding="20dp"
+                android:text="Down Time"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/lato_regular"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#A5E830"
+                android:layout_marginTop="10dp"
+                android:text="Schedule Away time \n from Screen"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/ubuntu_r"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/app_limit_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ShapeAppearanceOverlay.Stress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.9">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="27dp"
+            android:layout_marginBottom="27dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_mobile_phone_graphic"
+                android:background="#A5E830"
+                android:drawablePadding="20dp"
+                android:text="App Limit"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/lato_regular"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#A5E830"
+                android:layout_marginTop="10dp"
+                android:text="Set Time Limit \nper App"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/ubuntu_r"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/most_used_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ShapeAppearanceOverlay.Stress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.45"
+        app:layout_constraintHorizontal_bias="0.1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="27dp"
+            android:layout_marginBottom="27dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_trending_graphic"
+                android:background="#A5E830"
+                android:drawablePadding="20dp"
+                android:text="Most Used"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/lato_regular"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#A5E830"
+                android:layout_marginTop="10dp"
+                android:text="Track your usage time \nper App"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/ubuntu_r"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/data_usage_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ShapeAppearanceOverlay.Stress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.45"
+        app:layout_constraintHorizontal_bias="0.9">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="27dp"
+            android:layout_marginBottom="27dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_swap_arrow_graphic"
+                android:background="#A5E830"
+                android:drawablePadding="20dp"
+                android:text="Data Usage"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/lato_regular"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#A5E830"
+                android:layout_marginTop="10dp"
+                android:text="Track your data usage \nper App"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/ubuntu_r"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time Spend on all These tasks Today"
+        android:textAlignment="center"
+        android:textColor="#331E68"
+        android:fontFamily="@font/ubuntu_r"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.65"/>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/stress_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_notification_graphic"
+                android:drawablePadding="20dp"
+                android:text="Notification"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/ubuntu_r"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="256"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/ubuntu_r"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/stress_meter_unlock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.5">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_unlock_graphic"
+                android:drawablePadding="20dp"
+                android:text="Unlock"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/ubuntu_r"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="32"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/ubuntu_r"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/stress_music"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.9">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_headphones_graphic"
+                android:drawablePadding="20dp"
+                android:text="Music"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/ubuntu_r"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="00:34:30"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/ubuntu_r"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

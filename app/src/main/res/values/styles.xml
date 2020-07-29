@@ -48,8 +48,8 @@
 
     <style name="ShapeAppearanceOverlay.MaterialCardView" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopLeft">50dp</item>
-        <item name="cornerSizeTopRight">50dp</item>
+        <item name="cornerSizeTopLeft">40dp</item>
+        <item name="cornerSizeTopRight">40dp</item>
     </style>
 
     <style name="roundedCardViewStepUp" parent="Widget.MaterialComponents.CardView">
@@ -65,6 +65,10 @@
         <item name="cornerSizeBottomRight">20dp</item>
     </style>
 
+
+    <style name="ShapeAppearanceOverlay.Stress" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">#A5E830</item>
+    </style>
 
 
 </resources>

@@ -27,7 +27,7 @@
     <!-- Scratch View -->
     <string name="scratch_view_title">Scratch card &amp; Discover Badge</string>
     <string name="next_level_button">Next Level</string>
-    <string name="family_question">Tell me about you and yours family aliments</string>
+    <string name="family_question">Tell me about you and yours \n family aliments</string>
     <string name="disease_pick">Choose the diseases you have</string>
     <string name="medical_history_tree">Medical History Tree</string>
 
