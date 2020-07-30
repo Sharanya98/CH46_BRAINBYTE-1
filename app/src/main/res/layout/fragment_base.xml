@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat"
-        android:text="Points"
+        android:text="HPoints"
         android:elevation="8dp"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat"
-        android:text="War"
+        android:text="Badges"
         android:elevation="8dp"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
@@ -133,7 +133,17 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/ic_crown_graphic" />
-
+    <TextView
+        android:id="@+id/tier_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Gold III"
+        android:elevation="8dp"
+        android:textAlignment="center"
+        android:textColor="#f4c73e"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/player_badge2"

@@ -153,7 +153,7 @@
         tools:layout="@layout/fragment_step_up_detail" />
     <fragment
         android:id="@+id/diseasePickerFragment"
-        android:name="com.brainbyte.healthareana.ui.disease.DiseasePickerFragment"
+        android:name="com.brainbyte.healthareana.ui.power_genes.DiseasePickerFragment"
         android:label="DiseasePickerFragment"
         tools:layout="@layout/fragment_disease_picker">
         <action
@@ -162,7 +162,7 @@
     </fragment>
     <fragment
         android:id="@+id/diseaseOnBoardingFragment"
-        android:name="com.brainbyte.healthareana.ui.disease.DiseaseOnBoardingFragment"
+        android:name="com.brainbyte.healthareana.ui.power_genes.DiseaseOnBoardingFragment"
         android:label="DiseaseOnBoardingFragment"
         tools:layout="@layout/fragment_disease_on_board">
         <action
@@ -172,7 +172,7 @@
 
     <fragment
         android:id="@+id/familyTreeFragment"
-        android:name="com.brainbyte.healthareana.ui.disease.FamilyTreeFragment"
+        android:name="com.brainbyte.healthareana.ui.power_genes.FamilyTreeFragment"
         android:label="FamilyTreeFragment"
         tools:layout="@layout/fragment_family_tree" />
 

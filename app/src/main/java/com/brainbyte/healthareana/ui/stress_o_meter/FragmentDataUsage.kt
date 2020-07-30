@@ -27,6 +27,8 @@ class FragmentDataUsage : Fragment() {
 
         binding.apply {
 
+            mostUsedTitle.text = "Data Used"
+
             youtubeAppNameTime.text = "1 GB"
 
             mostUsedAppNameTime.text = "3 GB"

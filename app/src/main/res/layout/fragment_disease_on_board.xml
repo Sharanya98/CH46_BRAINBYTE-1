@@ -13,7 +13,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tool:src="@drawable/ic_family_tree_graphic" />
+        android:src="@drawable/ic_family_tree_graphic" />
 
     <TextView
         android:id="@+id/family_question"
@@ -27,10 +27,12 @@
         app:layout_constraintStart_toStartOf="@id/family_tree_icon"
         app:layout_constraintTop_toBottomOf="@id/family_tree_icon" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <ImageButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/ic_rounded_button_cyan"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

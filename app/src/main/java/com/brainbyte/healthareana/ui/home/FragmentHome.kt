@@ -35,43 +35,36 @@ class FragmentHome : Fragment() {
     // TODO:: insert data idhar
     private val listOfScore = listOf(
         ScoreModel(
-            R.drawable.ic_baseline_arrow_forward_24,
+            R.drawable.ic_bmi_calculator,
             "BMI",
             240,
             123,
             listOf(R.drawable.ic_coin, R.drawable.ic_coin, R.drawable.ic_coin, R.drawable.ic_coin)
         ),
         ScoreModel(
-            R.drawable.ic_baseline_arrow_forward_24,
-            "BMI",
+            R.drawable.ic_setup_footsteps,
+            "Step Up",
             240,
             123,
             listOf(R.drawable.ic_coin, R.drawable.ic_coin, R.drawable.ic_coin, R.drawable.ic_coin)
         ),
         ScoreModel(
-            R.drawable.ic_baseline_arrow_forward_24,
-            "BMI",
+            R.drawable.ic_soberity_toast,
+            "Sobriety",
             240,
             123,
             listOf(R.drawable.ic_coin, R.drawable.ic_coin, R.drawable.ic_coin, R.drawable.ic_coin)
         ),
         ScoreModel(
-            R.drawable.ic_baseline_arrow_forward_24,
-            "BMI",
+            R.drawable.ic_stress_image,
+            "StressOMeter",
             240,
             123,
             listOf(R.drawable.ic_coin, R.drawable.ic_coin, R.drawable.ic_coin, R.drawable.ic_coin)
         ),
         ScoreModel(
-            R.drawable.ic_baseline_arrow_forward_24,
-            "BMI",
-            240,
-            123,
-            listOf(R.drawable.ic_coin, R.drawable.ic_coin, R.drawable.ic_coin, R.drawable.ic_coin)
-        ),
-        ScoreModel(
-            R.drawable.ic_baseline_arrow_forward_24,
-            "BMI",
+            R.drawable.ic_power_gene_image,
+            "Power Genes",
             240,
             123,
             listOf(R.drawable.ic_coin, R.drawable.ic_coin, R.drawable.ic_coin, R.drawable.ic_coin)
@@ -91,7 +84,7 @@ class FragmentHome : Fragment() {
                     findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToFragmentBMI())
                 }
 
-                soberityGameButton.setOnClickListener {
+                sobrietyGameButton.setOnClickListener {
                     findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToAddictionOnBoarding())
                 }
 
