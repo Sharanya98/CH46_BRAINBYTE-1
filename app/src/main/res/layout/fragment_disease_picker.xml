@@ -11,6 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1"
+        android:fontFamily="@font/ubuntu_r"
+        android:textColor="#331E68"
         android:gravity="center"
         android:text="@string/disease_pick"
         android:textSize="18sp" />
@@ -29,4 +31,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1" />
+
 </LinearLayout>

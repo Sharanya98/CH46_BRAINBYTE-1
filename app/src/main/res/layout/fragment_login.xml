@@ -54,4 +54,18 @@
         app:layout_constraintEnd_toEndOf="@id/login_hint_text_view"
         app:layout_constraintStart_toStartOf="@id/login_hint_text_view"
         app:layout_constraintTop_toBottomOf="@id/login_hint_text_view" />
+
+    <ImageView
+        android:id="@+id/background_clutter_design"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_background_clutter_design"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

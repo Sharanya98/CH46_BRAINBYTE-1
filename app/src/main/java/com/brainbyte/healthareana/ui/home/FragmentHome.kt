@@ -75,7 +75,6 @@ class FragmentHome : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             accountIcon.setOnClickListener { findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToFragmentQuestions()) }
-            playerName.setOnClickListener { findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToFragmentSuggestions()) }
             profileProgressBar.setProgressWithAnimation(85f, 5000)
             fragmentAccountContainer.recyclerView.apply {
                 adapter = ScoreAdapter(listOfScore)
@@ -100,6 +99,10 @@ class FragmentHome : Fragment() {
 
                 stressGameButton.setOnClickListener {
                     findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToFragmentStressOMeter())
+                }
+
+                suggestionButton.setOnClickListener {
+                    findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToFragmentSuggestions())
                 }
             }
         }

@@ -21,6 +21,8 @@
         android:layout_height="wrap_content"
         android:text="@string/family_question"
         android:textAlignment="center"
+        android:fontFamily="@font/ubuntu_r"
+        android:textColor="#331E68"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/fab"
         app:layout_constraintEnd_toEndOf="@id/family_tree_icon"

@@ -71,7 +71,7 @@ data class SuggestionModel(
     val reducedPremium: Int
 ) {
     companion object {
-        val totalHealthPoints = 4354
+        const val totalHealthPoints = 4354
     }
 }
 
@@ -159,7 +159,7 @@ class PolicyViewHolder(private val binding: ItemPolicyBinding, private val conte
     }
 
     fun bind(model: SuggestionModel) = binding.apply {
-        isUsingCoinsView.setOnCheckedChangeListener { buttonView, isChecked ->
+        isUsingCoinsView.setOnCheckedChangeListener { _, isChecked ->
             expand(isChecked)
         }
         policyTitle.text = model.title

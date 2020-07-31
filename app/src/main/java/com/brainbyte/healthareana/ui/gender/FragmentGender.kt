@@ -74,42 +74,14 @@ class FragmentGender : Fragment() {
             binding.apply {
                 if (isMale) {
 
-                    (genderChangeButton.drawable as VectorDrawable)
-                        .setTint(
-                            ContextCompat.getColor(
-                                requireContext(),
-                                R.color.color_gender_male
-                            )
-                        )
-
                     (genderImage.drawable as Animatable).start()
 
-                    root.setBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.color_gender_female
-                        )
-                    )
                     isMale = false
                     Timber.d("Value of isMale in if = $isMale")
                 } else {
 
-                    (genderChangeButton.drawable as VectorDrawable)
-                        .setTint(
-                            ContextCompat.getColor(
-                                requireContext(),
-                                R.color.color_gender_female
-                            )
-                        )
-
                     (genderImage.drawable as Animatable).start()
 
-                    root.setBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.color_gender_male
-                        )
-                    )
                     isMale = true
                     Timber.d("Value of isMale in else = $isMale")
                 }

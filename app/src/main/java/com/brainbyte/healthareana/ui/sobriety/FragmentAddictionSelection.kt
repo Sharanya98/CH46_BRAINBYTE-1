@@ -18,14 +18,14 @@ class FragmentAddictionSelection : Fragment() {
     private lateinit var binding: FragmentAddictionsBinding
 
     private val addictions = listOf(
-        Model("Smoking", R.drawable.ic_baseline_arrow_forward_24),
-        Model("Drinking", R.drawable.ic_baseline_arrow_forward_24),
-        Model("Drugs", R.drawable.ic_baseline_arrow_forward_24),
-        Model("T.V", R.drawable.ic_baseline_arrow_forward_24),
-        Model("Video Games", R.drawable.ic_baseline_arrow_forward_24),
-        Model("Fast Food", R.drawable.ic_baseline_arrow_forward_24),
-        Model("Social Media", R.drawable.ic_baseline_arrow_forward_24),
-        Model("Shopping", R.drawable.ic_baseline_arrow_forward_24)
+        Model("Smoking", R.drawable.ic_smoking_icon),
+        Model("Drinking", R.drawable.ic_wine_glass_icon),
+        Model("Drugs", R.drawable.ic_pills_icon),
+        Model("T.V", R.drawable.ic_tv_icon),
+        Model("Video Games", R.drawable.ic_game_controller_icon),
+        Model("Fast Food", R.drawable.ic_food_icon),
+        Model("Social Media", R.drawable.ic_mobile_phone_icon),
+        Model("Shopping", R.drawable.ic_shopping_cart_icon)
     )
 
     override fun onCreateView(

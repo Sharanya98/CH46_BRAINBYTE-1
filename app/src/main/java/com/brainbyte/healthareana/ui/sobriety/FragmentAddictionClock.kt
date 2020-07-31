@@ -15,7 +15,9 @@ class FragmentAddictionClock : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddictionClockBinding.inflate(inflater, container, false)
-        binding.fab.setOnClickListener { activity?.finish() }
+        binding.fab.setOnClickListener {
+            activity?.finish()
+        }
         return binding.root
     }
 }

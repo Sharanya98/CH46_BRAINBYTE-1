@@ -11,6 +11,7 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
@@ -182,14 +183,17 @@ class FragmentBMI : Fragment() {
         val trophyScratchLayoutBinding = TrophyScratchLayoutBinding.inflate(layoutInflater)
 
         trophyScratchLayoutBinding.apply {
-    
+            confettiShower.setAnimation("result-celebration.json")
+            confettiShower.repeatCount = 8
             scratchView.setRevealListener(object : ScratchImageView.IRevealListener {
-                @RequiresApi(Build.VERSION_CODES.M)
                 override fun onRevealed(iv: ScratchImageView?) {
+                    trophyScratchLayoutBinding.confettiShower.playAnimation()
                 }
 
                 override fun onRevealPercentChangedListener(siv: ScratchImageView?, percent: Float) {
-                   if(percent > 75.0) siv?.reveal()
+                   if(percent > 0.5) {
+                       siv?.reveal()
+                   }
                 }
 
             })
