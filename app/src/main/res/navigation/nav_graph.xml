@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_fragmentHome_to_fragmentSuggestions"
             app:destination="@id/fragmentSuggestions" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentQuestions"
+            app:destination="@id/fragmentQuestions" />
     </fragment>
     <fragment
         android:id="@+id/fragmentUserNameSelect"
@@ -234,6 +237,10 @@
         android:name="com.brainbyte.healthareana.ui.suggestions.FragmentSuggestions"
         android:label="FragmentSuggestions"
         tools:layout="@layout/fragment_policy_suggestion" />
-
+    <fragment
+        android:id="@+id/fragmentQuestions"
+        android:name="com.brainbyte.healthareana.ui.questions.QuestionsFragment"
+        android:label="FragmentQuestions"
+        tools:layout="@layout/fragment_questions" />
 
 </navigation>
