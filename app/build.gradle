@@ -8,10 +8,10 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 android {
     signingConfigs {
         release {
-            storeFile file('C:\\Users\\DevanshuVaidya\\Documents\\projects\\New folder\\health_arena_keystore.jks')
-            storePassword '12345678'
-            keyAlias 'key0'
-            keyPassword '12345678'
+//            storeFile file('C:\\Users\\DevanshuVaidya\\Documents\\projects\\New folder\\health_arena_keystore.jks')
+//            storePassword '12345678'
+//            keyAlias 'key0'
+//            keyPassword '12345678'
         }
     }
     compileSdkVersion 29

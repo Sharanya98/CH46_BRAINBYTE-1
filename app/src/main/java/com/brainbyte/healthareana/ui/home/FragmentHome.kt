@@ -74,6 +74,7 @@ class FragmentHome : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            playerName.setOnClickListener { findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToFragmentSuggestions()) }
             profileProgressBar.setProgressWithAnimation(85f, 5000)
             fragmentAccountContainer.recyclerView.apply {
                 adapter = ScoreAdapter(listOfScore)

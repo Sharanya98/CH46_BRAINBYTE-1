@@ -30,5 +30,9 @@
     <string name="family_question">Tell me about you and yours \n family aliments</string>
     <string name="disease_pick">Choose the diseases you have</string>
     <string name="medical_history_tree">Medical History Tree</string>
+    <string name="healthcare_plans">HealthCare Plans</string>
+    <string name="connect">Connect</string>
+    <string name="total_health_points">Total Health Points</string>
+    <string name="use_coins">Use coins</string>
 
 </resources>

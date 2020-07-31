@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_fragmentHome_to_fragmentStressOMeter"
             app:destination="@id/fragmentStressOMeter" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentSuggestions"
+            app:destination="@id/fragmentSuggestions" />
     </fragment>
     <fragment
         android:id="@+id/fragmentUserNameSelect"
@@ -209,23 +212,28 @@
         android:id="@+id/fragmentDownTime"
         android:name="com.brainbyte.healthareana.ui.stress_o_meter.FragmentDownTime"
         android:label="FragmentDownTime"
-        tools:layout="@layout/fragment_stress_o_meter_downtime"/>
+        tools:layout="@layout/fragment_stress_o_meter_downtime" />
 
     <fragment
         android:id="@+id/fragmentStressOMeterAppLimit"
         android:name="com.brainbyte.healthareana.ui.stress_o_meter.FragmentAppLimit"
         android:label="FragmentStressOMeterAppLimit"
-        tools:layout="@layout/fragment_stress_o_meter_app_limit"/>
+        tools:layout="@layout/fragment_stress_o_meter_app_limit" />
     <fragment
         android:id="@+id/fragmentStressOMeterDataUsage"
         android:name="com.brainbyte.healthareana.ui.stress_o_meter.FragmentDataUsage"
         android:label="FragmentStressOMeterDataUsage"
-        tools:layout="@layout/fragment_stress_o_meter_most_used"/>
+        tools:layout="@layout/fragment_stress_o_meter_most_used" />
     <fragment
         android:id="@+id/fragmentStressOMeterMostUsed"
         android:name="com.brainbyte.healthareana.ui.stress_o_meter.FragmentMostUsed"
         android:label="FragmentStressOMeterMostUsed"
-        tools:layout="@layout/fragment_stress_o_meter_most_used"/>
+        tools:layout="@layout/fragment_stress_o_meter_most_used" />
+    <fragment
+        android:id="@+id/fragmentSuggestions"
+        android:name="com.brainbyte.healthareana.ui.suggestions.FragmentSuggestions"
+        android:label="FragmentSuggestions"
+        tools:layout="@layout/fragment_policy_suggestion" />
 
 
 </navigation>
