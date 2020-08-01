@@ -31,6 +31,21 @@
         app:layout_constraintTop_toBottomOf="@id/app_icon" />
 
     <TextView
+        android:id="@+id/user_consent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_consent"
+        android:textColor="@color/colorOnPrimary"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1"/>
+
+    <TextView
         android:id="@+id/login_hint_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,7 +56,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"/>
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/button_sign_in"
@@ -51,6 +67,7 @@
         android:text="@string/sign_in_button"
         android:textColor="@color/colorOnPrimary"
         android:visibility="invisible"
+        app:layout_constraintVertical_bias="0.45"
         app:layout_constraintEnd_toEndOf="@id/login_hint_text_view"
         app:layout_constraintStart_toStartOf="@id/login_hint_text_view"
         app:layout_constraintTop_toBottomOf="@id/login_hint_text_view" />
@@ -62,10 +79,9 @@
         android:src="@drawable/ic_background_clutter_design"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.85"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

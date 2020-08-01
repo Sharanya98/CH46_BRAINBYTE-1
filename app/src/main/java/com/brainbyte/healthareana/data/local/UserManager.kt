@@ -30,6 +30,25 @@ class UserManager(private val sharedPreferences: SharedPreferences) {
             )
         }
 
+
+
+    fun storeBmiIndex(value: Float, points: Float) {
+        sharedPreferences.edit().apply() {
+            putFloat("bmi", value)
+            putFloat("bmi_points", points)
+            apply()
+        }
+    }
+
+    fun getBmiIndex(): Float {
+        return sharedPreferences.getFloat("bmi", 0f)
+    }
+
+    fun getBmiPoints(): Float {
+        return  sharedPreferences.getFloat("bmi_points", 0f)
+    }
+
+
     private fun logout(): Boolean =
         with(sharedPreferences.edit()) {
             remove(USER_PHOTO_URL)

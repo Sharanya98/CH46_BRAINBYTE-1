@@ -1,5 +1,6 @@
 package com.brainbyte.healthareana.ui.home
 
+import android.content.Context
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.style.AbsoluteSizeSpan
@@ -15,9 +16,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.brainbyte.healthareana.R
+import com.brainbyte.healthareana.data.local.UserManager
 import com.brainbyte.healthareana.databinding.FragmentBaseBinding
 import com.brainbyte.healthareana.databinding.ItemScoreBinding
 import com.brainbyte.healthareana.util.Truss
+import com.brainbyte.healthareana.util.USER_SP_KEY
 
 class FragmentHome : Fragment() {
 
@@ -29,16 +32,17 @@ class FragmentHome : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentBaseBinding.inflate(layoutInflater, container, false)
+
+
         return binding.root
     }
 
-    // TODO:: insert data idhar
     private val listOfScore = listOf(
         ScoreModel(
             R.drawable.ic_bmi_calculator,
             "BMI",
-            240,
-            123,
+          123,
+            100,
             listOf(R.drawable.ic_coin, R.drawable.ic_coin, R.drawable.ic_coin, R.drawable.ic_coin)
         ),
         ScoreModel(

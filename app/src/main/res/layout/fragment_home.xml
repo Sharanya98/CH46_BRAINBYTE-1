@@ -13,6 +13,25 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/ic_home_screen_layout">
 
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_game_logo_graphic"
+            android:background="@drawable/ic_game_logo_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/guideline2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BMI"
+            app:layout_constraintTop_toBottomOf="@id/guideline2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bmi_game_button"
+            app:layout_constraintStart_toStartOf="parent"/>
+
         <ImageButton
             android:id="@+id/bmi_game_button"
             android:layout_width="70dp"
@@ -34,6 +53,15 @@
             app:layout_constraintTop_toBottomOf="@id/guideline2"
             app:layout_constraintBottom_toTopOf="@id/guideline3"
             app:layout_constraintVertical_bias="0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Step Up"
+            app:layout_constraintTop_toBottomOf="@id/guideline3"
+            app:layout_constraintEnd_toEndOf="@id/step_up_game_button"
+            app:layout_constraintBottom_toTopOf="@id/step_up_game_button"
+            app:layout_constraintStart_toStartOf="@id/step_up_game_button" />
 
         <ImageButton
             android:id="@+id/step_up_game_button"
@@ -58,6 +86,15 @@
             app:layout_constraintVertical_bias="0.0"
             tools:layout_editor_absoluteX="0dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sobriety"
+            app:layout_constraintTop_toBottomOf="@id/guideline3"
+            app:layout_constraintEnd_toEndOf="@id/sobriety_game_button"
+            app:layout_constraintBottom_toTopOf="@id/sobriety_game_button"
+            app:layout_constraintStart_toStartOf="@id/sobriety_game_button"/>
+
         <ImageButton
             android:id="@+id/sobriety_game_button"
             android:layout_width="wrap_content"
@@ -71,6 +108,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guideline3"
             app:layout_constraintVertical_bias="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="StressOMeter"
+            app:layout_constraintTop_toBottomOf="@id/guideline4"
+            app:layout_constraintEnd_toEndOf="@id/stress_game_button"
+            app:layout_constraintBottom_toTopOf="@id/stress_game_button"
+            app:layout_constraintStart_toStartOf="@id/stress_game_button" />
 
         <ImageButton
             android:id="@+id/stress_game_button"
@@ -94,6 +140,15 @@
             app:layout_constraintBottom_toTopOf="@id/guideline5"
             app:layout_constraintVertical_bias="0"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Power Genes"
+            app:layout_constraintTop_toBottomOf="@id/guideline5"
+            app:layout_constraintEnd_toEndOf="@id/power_gene_game_button"
+            app:layout_constraintBottom_toTopOf="@id/power_gene_game_button"
+            app:layout_constraintStart_toStartOf="@id/power_gene_game_button" />
+
         <ImageButton
             android:id="@+id/power_gene_game_button"
             android:layout_width="70dp"
@@ -115,6 +170,15 @@
             app:layout_constraintTop_toBottomOf="@id/guideline5"
             app:layout_constraintBottom_toBottomOf="@id/guideline6"
             app:layout_constraintVertical_bias="0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Suggestions"
+            app:layout_constraintTop_toBottomOf="@id/guideline6"
+            app:layout_constraintEnd_toEndOf="@id/suggestion_button"
+            app:layout_constraintBottom_toTopOf="@id/suggestion_button"
+            app:layout_constraintStart_toStartOf="@id/suggestion_button" />
 
         <ImageButton
             android:id="@+id/suggestion_button"

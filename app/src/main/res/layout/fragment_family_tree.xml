@@ -59,8 +59,10 @@
         app:layout_constraintTop_toBottomOf="@id/john_doe" />
 
     <TextView
+        android:id="@+id/daughter_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         android:layout_marginTop="8dp"
         android:drawableTop="@drawable/ic_daughter_profile_icon"
         android:text="Daughter"
@@ -72,9 +74,11 @@
         app:layout_constraintTop_toBottomOf="@id/horizontal_bar_view_2" />
 
     <TextView
+        android:id="@+id/son_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:visibility="invisible"
         android:drawableTop="@drawable/ic_daughter_profile_icon"
         android:text="Son"
         android:fontFamily="@font/ubuntu_r"
@@ -88,6 +92,7 @@
         android:id="@+id/vertical_bar_view"
         android:layout_width="2dp"
         android:layout_height="48dp"
+        android:visibility="invisible"
         android:background="@android:color/black"
         app:layout_constraintStart_toStartOf="@id/guideline_right"
         app:layout_constraintTop_toBottomOf="@id/horizontal_bar_view" />
@@ -96,12 +101,14 @@
         android:id="@+id/horizontal_bar_view_2"
         android:layout_width="128dp"
         android:layout_height="2dp"
+        android:visibility="invisible"
         android:background="@android:color/black"
         app:layout_constraintEnd_toEndOf="@id/vertical_bar_view"
         app:layout_constraintStart_toStartOf="@id/vertical_bar_view"
         app:layout_constraintTop_toBottomOf="@id/vertical_bar_view" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_family"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

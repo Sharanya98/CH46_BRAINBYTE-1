@@ -1,6 +1,8 @@
 package com.brainbyte.healthareana.ui.bmi
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.Animatable
 import android.graphics.drawable.Animatable2
@@ -16,11 +18,14 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.brainbyte.healthareana.R
+import com.brainbyte.healthareana.data.local.UserManager
 import com.brainbyte.healthareana.databinding.BmiCongratsScreenBinding
 import com.brainbyte.healthareana.databinding.BmiResultViewBinding
 import com.brainbyte.healthareana.databinding.FragmentBmiBinding
 import com.brainbyte.healthareana.databinding.TrophyScratchLayoutBinding
+import com.brainbyte.healthareana.util.USER_SP_KEY
 import com.cooltechworks.views.ScratchImageView
 import com.cooltechworks.views.ScratchTextView
 import com.github.anastr.speedviewlib.SpeedTextListener
@@ -33,6 +38,9 @@ class FragmentBMI : Fragment() {
 
     private lateinit var binding: FragmentBmiBinding
 
+    private lateinit var userManager: UserManager
+
+
     private var height = 152
 
     private var weight = 60
@@ -43,6 +51,16 @@ class FragmentBMI : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentBmiBinding.inflate(layoutInflater, container, false)
+
+
+        context?.let {
+            userManager = UserManager(
+                it.getSharedPreferences(
+                    USER_SP_KEY,
+                    Context.MODE_PRIVATE
+                )
+            )
+        }
 
         binding.apply {
             heightRuler.selectValue(152)
@@ -91,6 +109,9 @@ class FragmentBMI : Fragment() {
         val resultDialogBuilder = AlertDialog.Builder(requireContext())
         val resultViewBinding = BmiResultViewBinding.inflate(layoutInflater)
         resultViewBinding.bmiSpeedView.apply {
+            unit = ""
+            minSpeed = 0F
+            maxSpeed = 40F
             sections.clear()
             addSections(Section(0f, .25f, Color.LTGRAY, this.dpTOpx(30f), Section.Style.ROUND))
             addSections(Section(.25f, .50f, Color.GREEN, this.dpTOpx(30f)))
@@ -112,7 +133,6 @@ class FragmentBMI : Fragment() {
                 override fun invoke(speed: Float): CharSequence {
                     return String.format(Locale.getDefault(), "%.1f", speed)
                 }
-
             }
         }
 
@@ -135,6 +155,7 @@ class FragmentBMI : Fragment() {
         val congratsDialogBuilder = AlertDialog.Builder(requireContext())
         val congratsScreenBinding = BmiCongratsScreenBinding.inflate(layoutInflater)
         var trophy = 0
+
         congratsScreenBinding.apply {
             coinShowerView.setAnimation("coin_shower.json")
             coinShowerView.repeatCount = 4
@@ -142,22 +163,26 @@ class FragmentBMI : Fragment() {
                congratsLogo.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_oops_emoji))
                congratsTitle.text = "Oops!!"
                pointsTextView.text = "50 XP"
+               userManager.storeBmiIndex(index, 50f)
                congratsQuote.text = "You need to Work on Yourself to earn a Fit Badge"
                congratsSuggestion.text =  "Your BMI Follows under Underweight, You should be more cautious."
             } else if(index >= 18.5 && index < 24.9) {
                pointsTextView.text = "100 XP"
+               userManager.storeBmiIndex(index, 100f)
                congratsSuggestion.text =  "Your BMI Follows under Normal Range, You are very healthy."
                trophy = 1
             } else if(index >= 25.0 && index < 29.9) {
                congratsLogo.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_oops_emoji))
                congratsTitle.text = "Oops!!"
                pointsTextView.text = "50 XP"
+               userManager.storeBmiIndex(index, 50f)
                congratsQuote.text = "You need to Work on Yourself to earn a Fit Badge"
                congratsSuggestion.text =  "Your BMI Follows under OverWeight, You are not alert towards health."
             } else {
                congratsLogo.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_oops_emoji))
                congratsTitle.text = "Oops!!"
                pointsTextView.text = "30 XP"
+               userManager.storeBmiIndex(index, 30f)
                congratsQuote.text = "You need to Work on Yourself to earn a Fit Badge"
                congratsSuggestion.text =  "Your BMI Follows under Obesity, You should be more cautious about your health."
             }
@@ -197,13 +222,19 @@ class FragmentBMI : Fragment() {
                 }
 
             })
+
+
         }
 
         scratchDialogBuilder.setView(trophyScratchLayoutBinding.root)
         val scratchDialog = scratchDialogBuilder.create()
         scratchDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         scratchDialog.show()
+        trophyScratchLayoutBinding.bmiCongratsContinueButton.setOnClickListener {
+            findNavController().navigate(R.id.fragmentHome)
+            scratchDialog.dismiss()
 
+        }
     }
 
 
