@@ -7,12 +7,12 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
     signingConfigs {
-        release {
-            storeFile file('C:\\Users\\DevanshuVaidya\\Documents\\projects\\New folder\\health_arena_keystore.jks')
-            storePassword '12345678'
-            keyAlias 'key0'
-            keyPassword '12345678'
-        }
+//        release {
+//            storeFile file('C:\\Users\\DevanshuVaidya\\Documents\\projects\\New folder\\health_arena_keystore.jks')
+//            storePassword '12345678'
+//            keyAlias 'key0'
+//            keyPassword '12345678'
+//        }
     }
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -25,7 +25,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        signingConfig signingConfigs.release
+//        signingConfig signingConfigs.release
         kapt {
             arguments {
                 arg("room.schemaLocation", "$projectDir/schemas")

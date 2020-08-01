@@ -134,7 +134,11 @@
     <fragment
         android:id="@+id/fragmentAddictionClock"
         android:name="com.brainbyte.healthareana.ui.sobriety.FragmentAddictionClock"
-        android:label="FragmentAddictionClock" />
+        android:label="FragmentAddictionClock">
+        <action
+            android:id="@+id/action_fragmentAddictionClock_to_fragmentAddictionList"
+            app:destination="@id/fragmentAddictionList" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentCalendar"
         android:name="com.brainbyte.healthareana.ui.calendar.FragmentCalendar"
@@ -242,5 +246,10 @@
         android:name="com.brainbyte.healthareana.ui.questions.QuestionsFragment"
         android:label="FragmentQuestions"
         tools:layout="@layout/fragment_questions" />
+    <fragment
+        android:id="@+id/fragmentAddictionList"
+        android:name="com.brainbyte.healthareana.ui.sobriety.FragmentAddictionList"
+        android:label="FragmentAddictionList"
+        tools:layout="@layout/fragment_addiction_list" />
 
 </navigation>

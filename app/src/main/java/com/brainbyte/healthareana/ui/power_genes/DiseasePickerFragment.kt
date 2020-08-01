@@ -101,7 +101,7 @@ class DiseaseVH(private val binding: ItemDiseaseBinding, private val cLickHandle
         diseaseTitle.text = model.title
         cardView.setCardBackgroundColor(
             Color.parseColor(
-                if (!model.picked) "#74EBD5"
+                if (!model.picked) "#BBBBF0"
                 else listOf(
                     "#FF6998",
                     "#CC97EC",
