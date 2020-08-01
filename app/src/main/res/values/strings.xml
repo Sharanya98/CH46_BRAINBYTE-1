@@ -38,5 +38,6 @@
     <string name="connect">Connect</string>
     <string name="total_health_points">Total Health Points</string>
     <string name="use_coins">Use coins</string>
+    <string name="abstinence">Abstinence</string>
 
 </resources>

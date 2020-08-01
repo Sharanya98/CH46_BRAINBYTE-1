@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.brainbyte.healthareana.databinding.FragmentAddictionClockBinding
 
 class FragmentAddictionClock : Fragment() {
@@ -16,7 +17,7 @@ class FragmentAddictionClock : Fragment() {
     ): View? {
         binding = FragmentAddictionClockBinding.inflate(inflater, container, false)
         binding.fab.setOnClickListener {
-            activity?.finish()
+            findNavController().navigate(FragmentAddictionClockDirections.actionFragmentAddictionClockToFragmentAddictionList())
         }
         return binding.root
     }
