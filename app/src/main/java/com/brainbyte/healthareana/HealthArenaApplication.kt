@@ -6,6 +6,10 @@ import timber.log.Timber
 
 class HealthArenaApplication : Application() {
 
+    var incomePop = true
+
+
+
     val addictionStorage by lazy {
         AddictionStorage()
     }

@@ -12,7 +12,7 @@
     <string name="next">Next</string>
     <string name="edittext_hint">Enter your gaming name here.</string>
     <!-- Calendar Resources -->
-    <string name="calendar_title">On which date you came alive to this Earth!!</string>
+    <string name="calendar_title">On which date you came \nalive to this Earth!!</string>
 
     <!-- BMI Resources-->
     <string name="bmi_title">BMI Calculator</string>

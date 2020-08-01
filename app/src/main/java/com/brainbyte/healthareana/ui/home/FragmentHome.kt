@@ -1,7 +1,10 @@
 package com.brainbyte.healthareana.ui.home
 
+import android.app.AlertDialog
 import android.content.Context
+import android.graphics.Color
 import android.graphics.Typeface
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.style.AbsoluteSizeSpan
 import android.text.style.ImageSpan
@@ -15,10 +18,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.brainbyte.healthareana.HealthArenaApplication
 import com.brainbyte.healthareana.R
 import com.brainbyte.healthareana.data.local.UserManager
 import com.brainbyte.healthareana.databinding.FragmentBaseBinding
 import com.brainbyte.healthareana.databinding.ItemScoreBinding
+import com.brainbyte.healthareana.databinding.PopIncomeBinding
+import com.brainbyte.healthareana.databinding.PopOccupationBinding
 import com.brainbyte.healthareana.util.Truss
 import com.brainbyte.healthareana.util.USER_SP_KEY
 
@@ -32,8 +38,6 @@ class FragmentHome : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentBaseBinding.inflate(layoutInflater, container, false)
-
-
         return binding.root
     }
 
@@ -77,6 +81,12 @@ class FragmentHome : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if((requireActivity().application as HealthArenaApplication).incomePop) {
+            (requireActivity().application as HealthArenaApplication).incomePop = false
+            showIncomePopUp()
+        }
+
         binding.apply {
             accountIcon.setOnClickListener { findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToFragmentQuestions()) }
             profileProgressBar.setProgressWithAnimation(85f, 5000)
@@ -112,6 +122,70 @@ class FragmentHome : Fragment() {
         }
 
     }
+
+
+    private fun showIncomePopUp() {
+        val incomeDialogBuilder = AlertDialog.Builder(requireContext())
+        val incomePopupBinding = PopIncomeBinding.inflate(layoutInflater)
+
+        incomePopupBinding.apply {
+
+        }
+
+        incomeDialogBuilder.setView(incomePopupBinding.root)
+        val incomeDialog = incomeDialogBuilder.create()
+        incomeDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        incomeDialog.show()
+
+        incomePopupBinding.bmiResultContinueButton.setOnClickListener {
+            incomeDialog.dismiss()
+        }
+    }
+
+
+    private fun showOccupationPopUp() {
+        val occupationDialogBuilder = AlertDialog.Builder(requireContext())
+        val occupationPopupBinding = PopOccupationBinding.inflate(layoutInflater)
+
+        occupationPopupBinding.apply {
+
+            agriButton.setOnClickListener {
+                it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark))
+
+            }
+
+            selfButton.setOnClickListener {
+
+            }
+
+            serviceButton.setOnClickListener {
+
+            }
+
+            govtButton.setOnClickListener {
+
+            }
+
+            businessButton.setOnClickListener {
+
+            }
+
+            retiredButton.setOnClickListener {
+
+            }
+
+        }
+
+
+        val occupationDialog = occupationDialogBuilder.create()
+        occupationDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        occupationDialog.show()
+        occupationPopupBinding.bmiResultContinueButton.setOnClickListener {
+            occupationDialog.dismiss()
+        }
+
+    }
+
 }
 
 data class ScoreModel(
