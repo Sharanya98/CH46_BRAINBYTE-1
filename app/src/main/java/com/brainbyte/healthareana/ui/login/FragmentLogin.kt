@@ -1,11 +1,14 @@
 package com.brainbyte.healthareana.ui.login
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.animation.doOnStart
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.brainbyte.healthareana.R
@@ -29,10 +32,11 @@ import timber.log.Timber
 
 class FragmentLogin : Fragment() {
 
-    lateinit var googleSignInClient: GoogleSignInClient
-    lateinit var auth: FirebaseAuth
+    private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var auth: FirebaseAuth
     private val RC_SIGN_IN = 9001
     private lateinit var userManager: UserManager
+    private lateinit var binding: FragmentLoginBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,7 +47,7 @@ class FragmentLogin : Fragment() {
         }
         if (userManager.isUserLoggedIn()) navigateToHome()
 
-        val binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
+        binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
         auth = FirebaseAuth.getInstance()
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -58,15 +62,42 @@ class FragmentLogin : Fragment() {
 
         binding.apply {
             buttonSignIn.apply {
-                setOnClickListener {
-                    loginTitle.text = resources.getText(R.string.sign_in_button)
-                    signIn()
-                }
+                setOnClickListener { signIn() }
             }
         }
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        showAppName()
+    }
+
+    private fun showAppName() {
+        val titleAnimation = with(binding.titleTextView) {
+            ObjectAnimator.ofFloat(this, View.ALPHA, 0f, 1f).apply {
+                doOnStart { visibility = View.VISIBLE }
+            }
+        }
+
+        val hintAnimation = with(binding.loginHintTextView) {
+            ObjectAnimator.ofFloat(this, View.ALPHA, 0f, 1f).apply {
+                doOnStart { visibility = View.VISIBLE }
+            }
+        }
+        val buttonAnimation = with(binding.buttonSignIn) {
+            ObjectAnimator.ofFloat(this, View.ALPHA, 0f, 1f).apply {
+                doOnStart { visibility = View.VISIBLE }
+            }
+        }
+        AnimatorSet().apply {
+            duration = 700
+            playTogether(
+                titleAnimation, hintAnimation, buttonAnimation
+            )
+            start()
+        }
+    }
 
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
@@ -87,7 +118,7 @@ class FragmentLogin : Fragment() {
                     val result = loginUser(it)
                     if (result is Success) {
                         userManager.saveAccount(result.data)
-                        navigateToHome()
+                        findNavController().navigate(FragmentLoginDirections.actionFragmentLoginToFragmentUserNameSelect())
                     }
 
                 }
@@ -97,9 +128,9 @@ class FragmentLogin : Fragment() {
         }
     }
 
-    private fun navigateToHome() {
-        findNavController().navigate(R.id.fragmentHome)
-    }
+    private fun navigateToHome() = findNavController().navigate(R.id.fragmentBMI)
+
+    private fun navigateToGender() = findNavController().navigate(R.id.fragmentGender)
 
     private fun loginUser(account: GoogleSignInAccount): Result<User> {
 
@@ -159,5 +190,4 @@ class FragmentLogin : Fragment() {
         runBlocking { delay(1000) }
         return result
     }
-
 }

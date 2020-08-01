@@ -8,7 +8,7 @@ buildscript {
         dagger_version = '2.26'
         glide_version = '4.11.0'
         nav_version = '2.3.0'
-        kotlin_coroutines = "1.3.2"
+        kotlin_coroutines = "1.3.8"
         moshi_version = "1.9.3"
         room_version = '2.2.5'
         junit_version = '4.13'
@@ -29,7 +29,7 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.0'
+        classpath 'com.android.tools.build:gradle:4.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.gms:google-services:4.3.3'
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"

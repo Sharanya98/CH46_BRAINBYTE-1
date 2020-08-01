@@ -25,19 +25,22 @@
 
 
     <ConstraintSet android:id="@+id/full_home_state">
-        <Constraint android:id="@id/account_icon">
-            <CustomAttribute
-                motion:attributeName="BackgroundColor"
-                motion:customColorValue="#FFFFFF" />
-
+        <Constraint android:id="@id/account_icon"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toTopOf="@id/fragment_home_container"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintVertical_bias="0.503">
             <Layout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 motion:layout_constraintBottom_toTopOf="@id/fragment_home_container"
                 motion:layout_constraintEnd_toEndOf="parent"
                 motion:layout_constraintTop_toTopOf="parent" />
-
         </Constraint>
+
+        <Constraint android:id="@id/profile_progress_bar"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toTopOf="@id/fragment_home_container"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
 
         <Constraint android:id="@id/fragment_account_container">
             <Layout
@@ -47,21 +50,237 @@
                 motion:layout_constraintEnd_toEndOf="parent"
                 motion:layout_constraintStart_toStartOf="parent"
                 motion:layout_constraintTop_toTopOf="@id/fragment_home_container" />
+        </Constraint>
 
+        <Constraint android:id="@id/fragment_home_container"
+            android:layout_height="match_parent"
+            android:elevation="50dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            motion:layout_constraintTop_toTopOf="parent"/>
 
+            <Constraint android:id="@id/points_title"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                motion:layout_constraintTop_toBottomOf="@id/player_name"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintEnd_toStartOf="@id/vertical_dash_1"
+                motion:layout_constraintHorizontal_bias="0.8"/>
+
+            <Constraint
+                android:id="@+id/points_display"
+                android:layout_marginTop="10dp"
+                android:elevation="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                motion:layout_constraintTop_toBottomOf="@id/points_title"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintEnd_toStartOf="@id/vertical_dash_1"
+                motion:layout_constraintHorizontal_bias="0.8"/>
+
+            <Constraint android:id="@id/vertical_dash_1"
+                android:layout_width="40dp"
+                android:layout_height="120dp"
+                motion:layout_constraintHorizontal_chainStyle="spread"
+                motion:layout_constraintTop_toBottomOf="@id/player_name"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintEnd_toStartOf="@id/vertical_dash_2"/>
+
+            <Constraint android:id="@id/war_title"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                motion:layout_constraintTop_toBottomOf="@id/player_name"
+                motion:layout_constraintStart_toEndOf="@id/vertical_dash_1"
+                motion:layout_constraintEnd_toStartOf="@id/vertical_dash_2" />
+
+            <Constraint
+                android:id="@+id/war_display"
+                android:layout_marginTop="10dp"
+                android:elevation="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                motion:layout_constraintTop_toBottomOf="@id/war_title"
+                motion:layout_constraintStart_toEndOf="@id/vertical_dash_1"
+                motion:layout_constraintEnd_toStartOf="@id/vertical_dash_2" />
+
+            <Constraint android:id="@id/vertical_dash_2"
+                android:layout_width="40dp"
+                android:layout_height="120dp"
+                motion:layout_constraintHorizontal_chainStyle="spread"
+                motion:layout_constraintTop_toBottomOf="@id/player_name"
+                motion:layout_constraintStart_toEndOf="@id/vertical_dash_1"
+                motion:layout_constraintEnd_toEndOf="parent" />
+
+            <Constraint android:id="@id/rank_title"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                motion:layout_constraintTop_toBottomOf="@id/player_name"
+                motion:layout_constraintStart_toEndOf="@id/vertical_dash_2"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintHorizontal_bias="0.2"/>
+
+            <Constraint
+                android:id="@+id/rank_display"
+                android:layout_marginTop="10dp"
+                android:elevation="8dp"
+                motion:layout_constraintTop_toBottomOf="@id/rank_title"
+                motion:layout_constraintStart_toEndOf="@id/vertical_dash_2"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintHorizontal_bias="0.2"/>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/full_account_state">
+        <Constraint android:id="@id/account_icon">
+            <Layout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                motion:layout_constraintBottom_toTopOf="@id/fragment_home_container"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toTopOf="parent"
+                motion:layout_constraintVertical_bias="0.035"/>
+        </Constraint>
+
+        <Constraint android:id="@id/profile_progress_bar"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            motion:layout_constraintTop_toTopOf="@id/account_icon"
+            motion:layout_constraintBottom_toBottomOf="@id/account_icon"
+            motion:layout_constraintEnd_toEndOf="@id/account_icon"
+            motion:layout_constraintStart_toStartOf="@id/account_icon"/>
+
+        <Constraint android:id="@id/fragment_account_container">
+            <Layout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                motion:layout_constraintBottom_toTopOf="@id/fragment_home_container"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toBottomOf="@id/guideline_mid" />
         </Constraint>
 
         <Constraint android:id="@id/fragment_home_container">
             <Layout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
                 motion:layout_constraintBottom_toBottomOf="parent"
                 motion:layout_constraintEnd_toEndOf="parent"
                 motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintTop_toBottomOf="@id/guideline_top" />
+                motion:layout_constraintTop_toBottomOf="@id/guideline_bottom" />
         </Constraint>
+        <Constraint
+            android:id="@+id/guideline_mid"
+            motion:layout_constraintGuide_percent="0.4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Constraint android:id="@id/player_name"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/account_icon"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"/>
+
+        <Constraint android:id="@id/points_title"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/player_name"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toStartOf="@id/vertical_dash_1"
+            motion:layout_constraintHorizontal_bias="0.8"/>
+
+        <Constraint
+            android:id="@+id/points_display"
+            android:layout_marginTop="10dp"
+            android:elevation="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/points_title"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toStartOf="@id/vertical_dash_1"
+            motion:layout_constraintHorizontal_bias="0.8"/>
+
+        <Constraint android:id="@id/vertical_dash_1"
+            android:layout_width="40dp"
+            android:layout_height="120dp"
+            motion:layout_constraintHorizontal_chainStyle="spread"
+            motion:layout_constraintTop_toBottomOf="@id/player_name"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toStartOf="@id/vertical_dash_2"/>
+
+        <Constraint android:id="@id/war_title"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/player_name"
+            motion:layout_constraintStart_toEndOf="@id/vertical_dash_1"
+            motion:layout_constraintEnd_toStartOf="@id/vertical_dash_2" />
+
+        <Constraint
+            android:id="@+id/war_display"
+            android:layout_marginTop="10dp"
+            android:elevation="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/war_title"
+            motion:layout_constraintStart_toEndOf="@id/vertical_dash_1"
+            motion:layout_constraintEnd_toStartOf="@id/vertical_dash_2" />
+
+        <Constraint android:id="@id/vertical_dash_2"
+            android:layout_width="40dp"
+            android:layout_height="120dp"
+            motion:layout_constraintHorizontal_chainStyle="spread"
+            motion:layout_constraintTop_toBottomOf="@id/player_name"
+            motion:layout_constraintStart_toEndOf="@id/vertical_dash_1"
+            motion:layout_constraintEnd_toEndOf="parent" />
+
+        <Constraint android:id="@id/rank_title"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/player_name"
+            motion:layout_constraintStart_toEndOf="@id/vertical_dash_2"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintHorizontal_bias="0.2"/>
+
+        <Constraint
+            android:id="@+id/rank_display"
+            android:layout_marginTop="10dp"
+            android:elevation="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/rank_title"
+            motion:layout_constraintStart_toEndOf="@id/vertical_dash_2"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintHorizontal_bias="0.2"/>
+
+
+        <Constraint
+            android:id="@+id/player_badge"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/points_display"
+            motion:layout_constraintHorizontal_bias="0.2"/>
+
+        <Constraint
+            android:id="@+id/player_badge2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/rank_display"
+            motion:layout_constraintHorizontal_bias="0.8"/>
 
     </ConstraintSet>
+
 
     <ConstraintSet android:id="@+id/base_state">
         <Constraint android:id="@id/account_icon">
@@ -71,14 +290,139 @@
                 motion:layout_constraintBottom_toTopOf="@id/fragment_home_container"
                 motion:layout_constraintEnd_toEndOf="parent"
                 motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintTop_toTopOf="parent" />
-            <CustomAttribute
-                motion:attributeName="BackgroundColor"
-                motion:customColorValue="#9999FF" />
-
+                motion:layout_constraintTop_toTopOf="parent"
+                motion:layout_constraintVertical_bias="0.1"/>
         </Constraint>
 
-        <Constraint android:id="@id/fragment_account_container">
+        <Constraint android:id="@id/profile_progress_bar"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            motion:layout_constraintTop_toTopOf="@id/account_icon"
+            motion:layout_constraintBottom_toBottomOf="@id/account_icon"
+            motion:layout_constraintEnd_toEndOf="@id/account_icon"
+            motion:layout_constraintStart_toStartOf="@id/account_icon"/>
+
+        <Constraint android:id="@id/player_name"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/account_icon"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"/>
+
+        <Constraint android:id="@id/points_title"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/player_name"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toStartOf="@id/vertical_dash_1"
+            motion:layout_constraintHorizontal_bias="0.8"/>
+
+        <Constraint
+            android:id="@+id/points_display"
+            android:layout_marginTop="10dp"
+            android:elevation="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/points_title"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toStartOf="@id/vertical_dash_1"
+            motion:layout_constraintHorizontal_bias="0.8"/>
+
+        <Constraint android:id="@id/vertical_dash_1"
+            android:layout_width="40dp"
+            android:layout_height="120dp"
+            motion:layout_constraintHorizontal_chainStyle="spread"
+            motion:layout_constraintTop_toBottomOf="@id/player_name"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toStartOf="@id/vertical_dash_2"/>
+
+        <Constraint android:id="@id/war_title"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/player_name"
+            motion:layout_constraintStart_toEndOf="@id/vertical_dash_1"
+            motion:layout_constraintEnd_toStartOf="@id/vertical_dash_2" />
+
+        <Constraint
+            android:id="@+id/war_display"
+            android:layout_marginTop="10dp"
+            android:elevation="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/war_title"
+            motion:layout_constraintStart_toEndOf="@id/vertical_dash_1"
+            motion:layout_constraintEnd_toStartOf="@id/vertical_dash_2" />
+
+        <Constraint
+            android:id="@+id/tier_display"
+            android:layout_marginTop="15dp"
+            android:elevation="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/war_display"
+            motion:layout_constraintStart_toEndOf="@id/vertical_dash_1"
+            motion:layout_constraintEnd_toStartOf="@id/vertical_dash_2" />
+
+        <Constraint android:id="@id/vertical_dash_2"
+            android:layout_width="40dp"
+            android:layout_height="120dp"
+            motion:layout_constraintHorizontal_chainStyle="spread"
+            motion:layout_constraintTop_toBottomOf="@id/player_name"
+            motion:layout_constraintStart_toEndOf="@id/vertical_dash_1"
+            motion:layout_constraintEnd_toEndOf="parent" />
+
+        <Constraint android:id="@id/rank_title"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/player_name"
+            motion:layout_constraintStart_toEndOf="@id/vertical_dash_2"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintHorizontal_bias="0.2"/>
+
+        <Constraint
+            android:id="@+id/rank_display"
+            android:layout_marginTop="10dp"
+            android:elevation="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/rank_title"
+            motion:layout_constraintStart_toEndOf="@id/vertical_dash_2"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintHorizontal_bias="0.2"/>
+
+
+        <Constraint
+            android:id="@+id/player_badge"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/points_display"
+            motion:layout_constraintHorizontal_bias="0.2"/>
+
+        <Constraint
+            android:id="@+id/player_badge2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/rank_display"
+            motion:layout_constraintHorizontal_bias="0.8"/>
+
+        <Constraint android:id="@id/fragment_account_container"
+            motion:layout_constraintVertical_bias="0.0"
+            android:layout_height="0dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/fragment_home_container"
+            motion:layout_constraintBottom_toTopOf="@id/fragment_home_container"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent">
             <Layout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -97,39 +441,12 @@
                 motion:layout_constraintStart_toStartOf="parent"
                 motion:layout_constraintTop_toBottomOf="@id/guideline_mid" />
         </Constraint>
+        <Constraint
+            android:layout_height="wrap_content"
+            motion:layout_constraintGuide_percent="0.25"
+            android:layout_width="wrap_content"
+            android:id="@+id/guideline_top" />
 
-    </ConstraintSet>
 
-
-    <ConstraintSet android:id="@+id/full_account_state">
-        <Constraint android:id="@id/account_icon">
-            <Layout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                motion:layout_constraintBottom_toBottomOf="@id/fragment_account_container"
-                motion:layout_constraintEnd_toEndOf="parent"
-                motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintTop_toTopOf="@id/fragment_account_container" />
-        </Constraint>
-
-        <Constraint android:id="@id/fragment_account_container">
-            <Layout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                motion:layout_constraintBottom_toTopOf="@id/fragment_home_container"
-                motion:layout_constraintEnd_toEndOf="parent"
-                motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintTop_toTopOf="parent" />
-        </Constraint>
-
-        <Constraint android:id="@id/fragment_home_container">
-            <Layout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                motion:layout_constraintBottom_toBottomOf="parent"
-                motion:layout_constraintEnd_toEndOf="parent"
-                motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintTop_toBottomOf="@id/guideline_bottom" />
-        </Constraint>
     </ConstraintSet>
 </MotionScene>

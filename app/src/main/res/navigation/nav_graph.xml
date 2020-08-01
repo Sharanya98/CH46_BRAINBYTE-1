@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentLogin">
+    app:startDestination="@id/fragmentSplash">
 
     <fragment
         android:id="@+id/fragmentLogin"
@@ -11,13 +11,236 @@
         android:label="FragmentLogin"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_fragmentLogin_to_fragmentHome"
-            app:destination="@id/fragmentHome" />
+            android:id="@+id/action_fragmentLogin_to_fragmentUserNameSelect"
+            app:destination="@id/fragmentUserNameSelect"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
+
     </fragment>
 
     <fragment
         android:id="@+id/fragmentHome"
         android:name="com.brainbyte.healthareana.ui.home.FragmentHome"
         android:label="FragmentHome"
-        tools:layout="@layout/fragment_base"/>
+        tools:layout="@layout/fragment_base">
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentBMI"
+            app:destination="@id/fragmentBMI" />
+        <action
+            android:id="@+id/action_fragmentHome_to_addictionOnBoarding"
+            app:destination="@id/addictionOnBoarding" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentStepUp"
+            app:destination="@id/fragmentStepUp" />
+        <action
+            android:id="@+id/action_fragmentHome_to_diseaseOnBoardingFragment"
+            app:destination="@id/diseaseOnBoardingFragment" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentStressOMeter"
+            app:destination="@id/fragmentStressOMeter" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentSuggestions"
+            app:destination="@id/fragmentSuggestions" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentQuestions"
+            app:destination="@id/fragmentQuestions" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentUserNameSelect"
+        android:name="com.brainbyte.healthareana.ui.login.FragmentUserNameSelect"
+        android:label="FragmentUserNameSelect"
+        tools:layout="@layout/fragment_user_name">
+        <action
+            android:id="@+id/action_fragmentUserNameSelect_to_fragmentGender"
+            app:destination="@id/fragmentGender"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentGender"
+        android:name="com.brainbyte.healthareana.ui.gender.FragmentGender"
+        android:label="FragmentGender"
+        tools:layout="@layout/fragment_gender">
+        <action
+            android:id="@+id/action_fragmentGender_to_fragmentCalendar"
+            app:destination="@id/fragmentCalendar"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSplash"
+        android:name="com.brainbyte.healthareana.ui.splash.FragmentSplash"
+        android:label="FragmentSplash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_fragmentSplash_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
+        <action
+            android:id="@+id/action_fragmentSplash_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentBMI"
+        android:name="com.brainbyte.healthareana.ui.bmi.FragmentBMI"
+        android:label="FragmentBMI"
+        tools:layout="@layout/fragment_bmi" />
+
+    <fragment
+        android:id="@+id/addictionOnBoarding"
+        android:name="com.brainbyte.healthareana.ui.sobriety.AddictionOnBoarding"
+        android:label="AddictionOnBoarding"
+        tools:layout="@layout/fragment_addiction_on_board">
+        <action
+            android:id="@+id/action_addictionOnBoarding_to_fragmentAddictionSelection"
+            app:destination="@id/fragmentAddictionSelection" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentAddictionSelection"
+        android:name="com.brainbyte.healthareana.ui.sobriety.FragmentAddictionSelection"
+        android:label="FragmentAddictionSelection"
+        tools:layout="@layout/fragment_addictions">
+        <action
+            android:id="@+id/action_fragmentAddictionSelection_to_timeCostFragment"
+            app:destination="@id/timeCostFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/additionDatePicker"
+        android:name="com.brainbyte.healthareana.ui.sobriety.AdditionDatePicker"
+        android:label="AdditionDatePicker"
+        tools:layout="@layout/fragment_addiction_clock">
+        <action
+            android:id="@+id/action_additionDatePicker_to_fragmentAddictionClock"
+            app:destination="@id/fragmentAddictionClock" />
+    </fragment>
+    <fragment
+        android:id="@+id/timeCostFragment"
+        android:name="com.brainbyte.healthareana.ui.sobriety.TimeCostFragment"
+        android:label="TimeCostFragment">
+        <action
+            android:id="@+id/action_timeCostFragment_to_additionDatePicker"
+            app:destination="@id/additionDatePicker" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentAddictionClock"
+        android:name="com.brainbyte.healthareana.ui.sobriety.FragmentAddictionClock"
+        android:label="FragmentAddictionClock" />
+    <fragment
+        android:id="@+id/fragmentCalendar"
+        android:name="com.brainbyte.healthareana.ui.calendar.FragmentCalendar"
+        android:label="FragmentCalendar">
+        <action
+            android:id="@+id/action_fragmentCalendar_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentStepUp"
+        android:name="com.brainbyte.healthareana.ui.step_up.FragmentStepUp"
+        android:label="FragmentStepUp"
+        tools:layout="@layout/fragment_step_up">
+        <action
+            android:id="@+id/action_fragmentStepUp_to_fragmentStepUpDetails"
+            app:destination="@id/fragmentStepUpDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentStepUpDetails"
+        android:name="com.brainbyte.healthareana.ui.step_up.FragmentStepUpDetails"
+        android:label="FragmentStepUpDetails"
+        tools:layout="@layout/fragment_step_up_detail" />
+    <fragment
+        android:id="@+id/diseasePickerFragment"
+        android:name="com.brainbyte.healthareana.ui.power_genes.DiseasePickerFragment"
+        android:label="DiseasePickerFragment"
+        tools:layout="@layout/fragment_disease_picker">
+        <action
+            android:id="@+id/action_diseasePickerFragment_to_familyTreeFragment"
+            app:destination="@id/familyTreeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/diseaseOnBoardingFragment"
+        android:name="com.brainbyte.healthareana.ui.power_genes.DiseaseOnBoardingFragment"
+        android:label="DiseaseOnBoardingFragment"
+        tools:layout="@layout/fragment_disease_on_board">
+        <action
+            android:id="@+id/action_diseaseOnBoardingFragment_to_diseasePickerFragment"
+            app:destination="@id/diseasePickerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/familyTreeFragment"
+        android:name="com.brainbyte.healthareana.ui.power_genes.FamilyTreeFragment"
+        android:label="FamilyTreeFragment"
+        tools:layout="@layout/fragment_family_tree" />
+
+    <fragment
+        android:id="@+id/fragmentStressOMeter"
+        android:name="com.brainbyte.healthareana.ui.stress_o_meter.FragmentStressOMeter"
+        android:label="FragmentStressOMeter"
+        tools:layout="@layout/fragment_stress_o_meter_start">
+        <action
+            android:id="@+id/action_fragmentStressOMeter_to_fragmentStressOMeterDetail"
+            app:destination="@id/fragmentStressOMeterDetail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentStressOMeterDetail"
+        android:name="com.brainbyte.healthareana.ui.stress_o_meter.FragmentStressOMeterDetail"
+        android:label="FragmentStressOMeterDetail"
+        tools:layout="@layout/fragment_stress_o_meter_detail">
+        <action
+            android:id="@+id/action_fragmentStressOMeterDetail_to_fragmentDownTime"
+            app:destination="@id/fragmentDownTime" />
+        <action
+            android:id="@+id/action_fragmentStressOMeterDetail_to_fragmentStressOMeterAppLimit"
+            app:destination="@id/fragmentStressOMeterAppLimit" />
+        <action
+            android:id="@+id/action_fragmentStressOMeterDetail_to_fragmentStressOMeterDataUsage"
+            app:destination="@id/fragmentStressOMeterDataUsage" />
+        <action
+            android:id="@+id/action_fragmentStressOMeterDetail_to_fragmentStressOMeterMostUsed"
+            app:destination="@id/fragmentStressOMeterMostUsed" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentDownTime"
+        android:name="com.brainbyte.healthareana.ui.stress_o_meter.FragmentDownTime"
+        android:label="FragmentDownTime"
+        tools:layout="@layout/fragment_stress_o_meter_downtime" />
+
+    <fragment
+        android:id="@+id/fragmentStressOMeterAppLimit"
+        android:name="com.brainbyte.healthareana.ui.stress_o_meter.FragmentAppLimit"
+        android:label="FragmentStressOMeterAppLimit"
+        tools:layout="@layout/fragment_stress_o_meter_app_limit" />
+    <fragment
+        android:id="@+id/fragmentStressOMeterDataUsage"
+        android:name="com.brainbyte.healthareana.ui.stress_o_meter.FragmentDataUsage"
+        android:label="FragmentStressOMeterDataUsage"
+        tools:layout="@layout/fragment_stress_o_meter_most_used" />
+    <fragment
+        android:id="@+id/fragmentStressOMeterMostUsed"
+        android:name="com.brainbyte.healthareana.ui.stress_o_meter.FragmentMostUsed"
+        android:label="FragmentStressOMeterMostUsed"
+        tools:layout="@layout/fragment_stress_o_meter_most_used" />
+    <fragment
+        android:id="@+id/fragmentSuggestions"
+        android:name="com.brainbyte.healthareana.ui.suggestions.FragmentSuggestions"
+        android:label="FragmentSuggestions"
+        tools:layout="@layout/fragment_policy_suggestion" />
+    <fragment
+        android:id="@+id/fragmentQuestions"
+        android:name="com.brainbyte.healthareana.ui.questions.QuestionsFragment"
+        android:label="FragmentQuestions"
+        tools:layout="@layout/fragment_questions" />
+
 </navigation>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.jackandphantom.circularprogressbar.CircleProgressbar
+        android:id="@+id/step_up_progress_bar"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        app:cpb_backgroundProgressColor="#EE8088"
+        app:cpb_foregroundProgressColor="#E21010"
+        app:cpb_backgroundProgressWidth="30"
+        app:cpb_foregroundProgressWidth="30"
+        app:cpb_roundedCorner="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.1"/>
+
+    <TextView
+        android:id="@+id/steps_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1542"
+        android:fontFamily="@font/ubuntu_r"
+        android:textSize="50sp"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintTop_toTopOf="@id/step_up_progress_bar"
+        app:layout_constraintBottom_toBottomOf="@id/step_up_progress_bar"
+        app:layout_constraintStart_toStartOf="@id/step_up_progress_bar"
+        app:layout_constraintEnd_toEndOf="@id/step_up_progress_bar"
+        app:layout_constraintVertical_bias="0.3"/>
+
+    <TextView
+        android:id="@+id/step_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="steps"
+        android:fontFamily="@font/ubuntu_r"
+        android:textSize="25sp"
+        android:textColor="@color/color_step_up"
+        app:layout_constraintTop_toBottomOf="@id/steps_text_view"
+        app:layout_constraintBottom_toBottomOf="@id/step_up_progress_bar"
+        app:layout_constraintStart_toStartOf="@id/step_up_progress_bar"
+        app:layout_constraintEnd_toEndOf="@id/step_up_progress_bar"
+        app:layout_constraintVertical_bias="0.11"/>
+
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_trail_running_shoe_graphic"
+        app:layout_constraintTop_toBottomOf="@id/step_title"
+        app:layout_constraintBottom_toBottomOf="@id/step_up_progress_bar"
+        app:layout_constraintStart_toStartOf="@id/step_up_progress_bar"
+        app:layout_constraintEnd_toEndOf="@id/step_up_progress_bar"
+        app:layout_constraintVertical_bias="0.1"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/distance_card_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/roundedCardViewStepUp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/timer_card_view"
+        app:layout_constraintTop_toBottomOf="@id/step_up_progress_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.1">
+
+        <TextView
+            android:id="@+id/distance_travelled_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ubuntu_r"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:drawablePadding="5dp"
+            android:text="2.3 KM"
+            android:textSize="18sp"
+            android:textColor="#E8505B"
+            android:drawableBottom="@drawable/ic_location_indicator_graphic"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/timer_card_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/roundedCardViewStepUp"
+        app:layout_constraintStart_toEndOf="@id/distance_card_view"
+        app:layout_constraintEnd_toStartOf="@id/calories_card_view"
+        app:layout_constraintTop_toBottomOf="@id/step_up_progress_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.1">
+
+        <TextView
+            android:id="@+id/timer_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ubuntu_r"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:drawablePadding="5dp"
+            android:text="56:45 Min"
+            android:textSize="18sp"
+            android:textColor="#E8505B"
+            android:drawableBottom="@drawable/ic_timer_graphic"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/calories_card_view"
+        style="@style/roundedCardViewStepUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/timer_card_view"
+        app:layout_constraintTop_toBottomOf="@id/step_up_progress_bar"
+        app:layout_constraintVertical_bias="0.1">
+
+        <TextView
+            android:id="@+id/calories_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ubuntu_r"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="10dp"
+            android:drawableBottom="@drawable/ic_calories_graphic"
+            android:drawablePadding="5dp"
+            android:text="1256 Cals"
+            android:textColor="#E8505B"
+            android:textSize="18sp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/timer_card_view"
+        app:layout_constraintBottom_toTopOf="@id/step_progress_chart">
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:chipSpacingHorizontal="70dp">
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This Week"
+                android:textColor="@color/color_step_up"
+                app:chipBackgroundColor="#F2B5BA"/>
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last Week"
+                android:textColor="@color/color_step_up"
+                app:chipBackgroundColor="#F2B5BA"/>
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This Month"
+                android:textColor="@color/color_step_up"
+                app:chipBackgroundColor="#F2B5BA"/>
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
+
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/step_progress_chart"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintTop_toBottomOf="@id/timer_card_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="1"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

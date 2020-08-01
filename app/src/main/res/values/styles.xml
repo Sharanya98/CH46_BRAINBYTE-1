@@ -23,4 +23,52 @@
         <item name="cornerSizeBottomRight">0dp</item>
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
+    
+    <style name="RoundedButton" parent="Widget.MaterialComponents.Button">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialComponents.Button.Rounded</item>
+    </style>
+
+    <style name="RoundedButtonRed" parent="Widget.MaterialComponents.Button">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialComponents.Button.Rounded</item>
+        <item name="background">@color/color_step_up</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MaterialComponents.Button.Rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+    </style>
+
+    <style name="roundedCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView</item>
+        <item name="cardBackgroundColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MaterialCardView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">40dp</item>
+        <item name="cornerSizeTopRight">40dp</item>
+    </style>
+
+    <style name="roundedCardViewStepUp" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.StepUp</item>
+        <item name="cardBackgroundColor">#F2B5BA</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MaterialCardView.StepUp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+    </style>
+
+
+    <style name="ShapeAppearanceOverlay.Stress" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">#A5E830</item>
+    </style>
+
+
 </resources>

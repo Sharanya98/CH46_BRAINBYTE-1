@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cost_card_view"
+        android:layout_width="0dp"
+        android:layout_height="128dp"
+        android:layout_margin="32dp"
+        android:backgroundTint="#BBBBF0"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/cost_seek_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="How much average weekly expense does your addiction cost you?"
+            android:textAlignment="center"
+            android:textColor="#331E68"
+            android:textSize="16sp" />
+    </androidx.cardview.widget.CardView>
+
+    <SeekBar
+        android:id="@+id/cost_seek_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toTopOf="@id/cost_chip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cost_card_view" />
+
+    <TextView
+        android:id="@+id/start_expense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="300"
+        app:layout_constraintStart_toStartOf="@id/cost_seek_bar"
+        app:layout_constraintTop_toBottomOf="@id/cost_seek_bar" />
+
+    <TextView
+        android:id="@+id/expense_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="100k+"
+        app:layout_constraintEnd_toEndOf="@id/cost_seek_bar"
+        app:layout_constraintTop_toBottomOf="@id/cost_seek_bar" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/cost_chip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:backgroundTint="#7284E8"
+        android:text="2004"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toTopOf="@id/time_card_view"
+        app:layout_constraintEnd_toEndOf="@id/cost_seek_bar"
+        app:layout_constraintStart_toStartOf="@id/cost_seek_bar"
+        app:layout_constraintTop_toBottomOf="@id/cost_seek_bar" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/time_card_view"
+        android:layout_width="0dp"
+        android:layout_height="128dp"
+        android:layout_margin="32dp"
+        android:backgroundTint="#BBBBF0"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/time_seek_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cost_chip">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="How much of your daily time(hrs) is lost due to this addiction?"
+            android:textAlignment="center"
+            android:textColor="#331E68"
+            android:textSize="16sp" />
+    </androidx.cardview.widget.CardView>
+
+    <SeekBar
+        android:id="@+id/time_seek_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toTopOf="@id/time_chip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/time_card_view" />
+
+    <TextView
+        android:id="@+id/start_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="1"
+        app:layout_constraintStart_toStartOf="@id/time_seek_bar"
+        app:layout_constraintTop_toBottomOf="@id/time_seek_bar" />
+
+    <TextView
+        android:id="@+id/time_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="24+"
+        app:layout_constraintEnd_toEndOf="@id/time_seek_bar"
+        app:layout_constraintTop_toBottomOf="@id/time_seek_bar" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/time_chip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:backgroundTint="#7284E8"
+        android:text="2004"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toTopOf="@+id/fab"
+        app:layout_constraintEnd_toEndOf="@id/time_seek_bar"
+        app:layout_constraintStart_toStartOf="@id/time_seek_bar"
+        app:layout_constraintTop_toBottomOf="@id/time_seek_bar" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="#7284E8"
+        android:src="@drawable/ic_baseline_arrow_forward_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
