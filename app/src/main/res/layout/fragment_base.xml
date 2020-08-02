@@ -28,6 +28,13 @@
         android:elevation="8dp"
         android:src="@drawable/ic_placeholder" />
 
+    <ImageButton
+        android:id="@+id/logout_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_power_off"
+        android:background="@android:color/transparent"/>
+
     <TextView
         android:id="@+id/player_name"
         android:layout_width="wrap_content"

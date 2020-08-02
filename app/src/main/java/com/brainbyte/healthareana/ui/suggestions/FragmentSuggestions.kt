@@ -1,5 +1,6 @@
 package com.brainbyte.healthareana.ui.suggestions
 
+import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,9 +17,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.TransitionManager
 import com.brainbyte.healthareana.R
+import com.brainbyte.healthareana.data.local.UserManager
 import com.brainbyte.healthareana.databinding.FragmentPolicySuggestionBinding
 import com.brainbyte.healthareana.databinding.ItemPolicyBinding
+import com.brainbyte.healthareana.databinding.PopSuggestionConnectBinding
 import com.brainbyte.healthareana.util.Truss
+import com.brainbyte.healthareana.util.USER_SP_KEY
 
 class FragmentSuggestions : Fragment() {
     private lateinit var binding: FragmentPolicySuggestionBinding
@@ -33,27 +38,36 @@ class FragmentSuggestions : Fragment() {
         return binding.root
     }
 
-    val policies = mutableListOf<SuggestionModel>().apply {
-        repeat(8) {
-            if (it != 0)
-                add(
-                    SuggestionModel(
-                        "Insure your family $it",
-                        123 * it,
-                        324 * it,
-                        it,
-                        0, false,
-                        123 * it / 2
+    private val policies = mutableListOf<SuggestionModel>()
 
-                    )
-                )
+    private fun showContactPopUp() {
+        val contactDialogBuilder = AlertDialog.Builder(requireContext())
+        val contactPopBinding = PopSuggestionConnectBinding.inflate(layoutInflater)
+        contactDialogBuilder.setView(contactPopBinding.root)
+
+        val contactDialog = contactDialogBuilder.create()
+        contactDialog.show()
+    }
+
+
+    inner class ClickHandler {
+        fun connect () {
+            showContactPopUp()
         }
     }
 
+
+
+
     private fun setUpData() {
-        binding.apply {
-            val truss = Truss()
-                .append("Hey Sharanya,\nYour")
+
+        val userManager = UserManager(requireContext().getSharedPreferences(USER_SP_KEY, Context.MODE_PRIVATE))
+
+        val user = userManager.getLoggedInUser()
+        val truss = Truss()
+
+        if(user.email == "vaidyadevanshu@gmail.com") {
+                 truss.append("Hey Sharanya,\nYour")
                 .pushSpan(ForegroundColorSpan(Color.RED))
                 .append(" BMI score")
                 .popSpan()
@@ -67,22 +81,71 @@ class FragmentSuggestions : Fragment() {
                 .popSpan()
                 .append(" and ")
                 .pushSpan(ForegroundColorSpan(Color.RED))
-                .append(" cancer.\n")
+                .append(" sugar.\n")
                 .popSpan()
                 .append("We would strongly recommend you to choose the suggested policy as it is best suited according to your age and income and it will provide good risk coverage for you as well as for your ")
                 .pushSpan(ForegroundColorSpan(Color.RED))
                 .append(" critical illnesses.")
+
+            policies.add(SuggestionModel("Family Floater Health insurance", 30000, 500000,4,1000, false, 29000))
+            policies.add(SuggestionModel("Critical Illness Health cover", 60000, 1000000,4,1000, false, 59000))
+
+        } else {
+
+            truss.append("Hey Aditya,\nYour")
+                .pushSpan(ForegroundColorSpan(Color.RED))
+                .append(" overall heath progress")
+                .popSpan()
+                .append(" is great. However, we are concerned regarding your ")
+                .pushSpan(ForegroundColorSpan(Color.RED))
+                .append("age ")
+                .popSpan()
+                .append("At this age health issues arise that involve ")
+                .pushSpan(ForegroundColorSpan(Color.RED))
+                .append("expensive ")
+                .popSpan()
+                .append("treatments and in order to cover such a high")
+                .pushSpan(ForegroundColorSpan(Color.RED))
+                .append(" medical cost ")
+                .popSpan()
+                .append("We would strongly recommend you to choose the suggested")
+                .pushSpan(ForegroundColorSpan(Color.RED))
+                .append(" senior citizen")
+                .popSpan()
+                .append(" health cover policies.\nIf you are previously ")
+                .pushSpan(ForegroundColorSpan(Color.BLACK))
+                .append(" insured ")
+                .popSpan()
+                .append("then we would recommend you to ")
+                .pushSpan(ForegroundColorSpan(Color.BLACK))
+                .append("customise ")
+                .popSpan()
+                .append("your health insurance using the ")
+                .pushSpan(ForegroundColorSpan(Color.BLACK))
+                .append("top up ")
+                .popSpan()
+                .append("health insurance policy.")
+
+
+            policies.add(SuggestionModel("Senior Citizen Health insurance", 30000, 500000,4,1000, false, 29000))
+            policies.add(SuggestionModel("Top up Health insurance", 60000, 1000000,4,1000, false, 59000))
+        }
+
+
+        binding.apply {
+
             subtitleTextView.text = truss.build()
         }
         binding.recyclerView.apply {
-            adapter = PolicyAdapter(requireContext()).apply {
+            adapter = PolicyAdapter(requireContext(), ClickHandler()).apply {
                 submitList(policies)
             }
             layoutManager = LinearLayoutManager(requireContext())
         }
-    }
 
+    }
 }
+
 
 data class SuggestionModel(
     val title: String,
@@ -99,7 +162,7 @@ data class SuggestionModel(
 }
 
 
-class PolicyAdapter(private val context: Context) :
+class PolicyAdapter(private val context: Context, private val handler: FragmentSuggestions.ClickHandler) :
     ListAdapter<SuggestionModel, PolicyViewHolder>(CALLBACK) {
     private companion object {
         val CALLBACK = object : DiffUtil.ItemCallback<SuggestionModel>() {
@@ -127,7 +190,7 @@ class PolicyAdapter(private val context: Context) :
 
 
     override fun onBindViewHolder(holder: PolicyViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), handler)
     }
 }
 
@@ -181,7 +244,7 @@ class PolicyViewHolder(private val binding: ItemPolicyBinding, private val conte
         )
     }
 
-    fun bind(model: SuggestionModel) = binding.apply {
+    fun bind(model: SuggestionModel, handler: FragmentSuggestions.ClickHandler) = binding.apply {
         isUsingCoinsView.setOnCheckedChangeListener { _, isChecked ->
             expand(isChecked)
         }
@@ -211,5 +274,14 @@ class PolicyViewHolder(private val binding: ItemPolicyBinding, private val conte
         pointsCountText.text = "  ${SuggestionModel.totalHealthPoints}"
         chipCoinCount.text = "${model.coins}"
         reducedPremiumText.text = "Premium\nRs ${model.premium / 3}"
+
+        connectButton.setOnClickListener {
+            handler.connect()
+        }
+
     }
+
+
+
+
 }

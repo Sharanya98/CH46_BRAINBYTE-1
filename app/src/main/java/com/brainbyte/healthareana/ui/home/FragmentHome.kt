@@ -27,6 +27,8 @@ import com.brainbyte.healthareana.databinding.PopIncomeBinding
 import com.brainbyte.healthareana.databinding.PopOccupationBinding
 import com.brainbyte.healthareana.util.Truss
 import com.brainbyte.healthareana.util.USER_SP_KEY
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 
 class FragmentHome : Fragment() {
 
@@ -82,10 +84,6 @@ class FragmentHome : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if((requireActivity().application as HealthArenaApplication).incomePop) {
-            (requireActivity().application as HealthArenaApplication).incomePop = false
-            showIncomePopUp()
-        }
 
         binding.apply {
             accountIcon.setOnClickListener { findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToFragmentQuestions()) }
@@ -94,6 +92,22 @@ class FragmentHome : Fragment() {
                 adapter = ScoreAdapter(listOfScore)
                 layoutManager = LinearLayoutManager(requireContext())
             }
+
+
+            val userManager = UserManager(requireContext().getSharedPreferences(USER_SP_KEY, Context.MODE_PRIVATE))
+
+            val user = userManager.getLoggedInUser()
+
+            if(user.email == "vaidyadevanshu@gmail.com")
+            {
+                playerName.text = "Sharanya Bhongade"
+            } else {
+                playerName.text = "Aditya Mahakalkar"
+                pointsDisplay.text = "2500"
+                warDisplay.text = "10"
+                rankDisplay.text = "100000"
+            }
+
             fragmentHomeContainer.apply {
                 bmiGameButton.setOnClickListener {
                     findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToFragmentBMI())
@@ -116,8 +130,26 @@ class FragmentHome : Fragment() {
                 }
 
                 suggestionButton.setOnClickListener {
-                    findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToFragmentSuggestions())
+                    findNavController().navigate(R.id.fragmentQuestions)
                 }
+            }
+
+            logoutBtn.setOnClickListener {
+                val userManager = UserManager(requireContext().getSharedPreferences(USER_SP_KEY, Context.MODE_PRIVATE))
+                userManager.logout()
+
+                val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestId()
+                    .requestIdToken(resources.getString(R.string.web_server_id))
+                    .requestEmail()
+                    .requestProfile()
+                    .build()
+
+                val googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
+
+                googleSignInClient.signOut()
+
+                findNavController().navigate(R.id.fragmentLogin)
             }
         }
 

@@ -118,7 +118,7 @@ class FragmentLogin : Fragment() {
                     val result = loginUser(it)
                     if (result is Success) {
                         userManager.saveAccount(result.data)
-                        findNavController().navigate(FragmentLoginDirections.actionFragmentLoginToFragmentUserNameSelect())
+                        findNavController().navigate(R.id.fragmentHome)
                     }
 
                 }

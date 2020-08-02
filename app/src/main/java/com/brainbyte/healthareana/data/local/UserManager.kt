@@ -20,7 +20,7 @@ class UserManager(private val sharedPreferences: SharedPreferences) {
 
     fun isUserLoggedIn(): Boolean = !sharedPreferences.getString(USER_ID, null).isNullOrBlank()
 
-    private fun getLoggedInUser(): User =
+    fun getLoggedInUser(): User =
         with(sharedPreferences) {
             User(
                 id = getString(USER_ID, null)!!,
@@ -49,7 +49,7 @@ class UserManager(private val sharedPreferences: SharedPreferences) {
     }
 
 
-    private fun logout(): Boolean =
+    fun logout(): Boolean =
         with(sharedPreferences.edit()) {
             remove(USER_PHOTO_URL)
             remove(USER_EMAIL)
