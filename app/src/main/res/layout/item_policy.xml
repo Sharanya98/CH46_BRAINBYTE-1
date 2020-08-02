@@ -39,8 +39,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/ubuntu_r"
                 android:drawableStart="@drawable/ic_coin"
+                android:fontFamily="@font/ubuntu_r"
                 app:layout_constraintStart_toStartOf="@id/health_points_text_view"
                 app:layout_constraintTop_toBottomOf="@id/health_points_text_view"
                 tools:text=" 123" />
@@ -49,8 +49,8 @@
                 android:id="@+id/use_coins_hint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/use_coins"
                 android:fontFamily="@font/ubuntu_r"
+                android:text="@string/use_coins"
                 app:layout_constraintEnd_toStartOf="@+id/reduced_premium_text"
                 app:layout_constraintStart_toEndOf="@id/health_points_text_view"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -124,8 +124,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:textColor="#ffffff"
                 android:fontFamily="@font/ubuntu_r"
+                android:textColor="#ffffff"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -136,8 +136,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:textAlignment="viewEnd"
                 android:fontFamily="@font/ubuntu_r"
+                android:textAlignment="viewEnd"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Premium \nRs 4837" />
@@ -172,8 +172,21 @@
                 android:backgroundTint="#ffffff"
                 android:text="@string/connect"
                 android:textColor="#000000"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/policy_term_period_text" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#ffffff"
+                android:text="Know More"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/connect_button"
+                app:layout_constraintEnd_toStartOf="@id/connect_button"
+                app:layout_constraintStart_toEndOf="@id/isUsingCoinsView"
+                app:layout_constraintTop_toTopOf="@id/connect_button" />
 
             <CheckBox
                 android:id="@+id/isUsingCoinsView"

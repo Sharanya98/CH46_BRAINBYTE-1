@@ -51,6 +51,29 @@ class FragmentSuggestions : Fragment() {
     }
 
     private fun setUpData() {
+        binding.apply {
+            val truss = Truss()
+                .append("Hey Sharanya,\nYour")
+                .pushSpan(ForegroundColorSpan(Color.RED))
+                .append(" BMI score")
+                .popSpan()
+                .append(" is great however your ")
+                .pushSpan(ForegroundColorSpan(Color.RED))
+                .append("power genes ")
+                .popSpan()
+                .append("data indicates that you are at risk for ")
+                .pushSpan(ForegroundColorSpan(Color.RED))
+                .append("diabetes")
+                .popSpan()
+                .append(" and ")
+                .pushSpan(ForegroundColorSpan(Color.RED))
+                .append(" cancer.\n")
+                .popSpan()
+                .append("We would strongly recommend you to choose the suggested policy as it is best suited according to your age and income and it will provide good risk coverage for you as well as for your ")
+                .pushSpan(ForegroundColorSpan(Color.RED))
+                .append(" critical illnesses.")
+            subtitleTextView.text = truss.build()
+        }
         binding.recyclerView.apply {
             adapter = PolicyAdapter(requireContext()).apply {
                 submitList(policies)

@@ -1,5 +1,6 @@
 package com.brainbyte.healthareana.ui.questions
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,10 +14,60 @@ import com.brainbyte.healthareana.databinding.ItemQuestionBinding
 
 class QuestionsFragment : Fragment() {
     private lateinit var binding: FragmentQuestionsBinding
-    private val list = mutableListOf<QuestionScreen>().apply {
-        repeat(10) {
-            add(QuestionScreen("Question $it", "Q$it option 1", "Q$it option 2"))
-        }
+    private var list = mutableListOf<QuestionScreen>().apply {
+        add(QuestionScreen("Do you have an insurance policy?", "Yes", "No", "Yes", null))
+        add(
+            QuestionScreen(
+                "what is policy limit?",
+                "Maximum amount paid to the user",
+                "Minimum amount paid to the user",
+                "Maximum amount paid to the user",
+                null
+            )
+        )
+        add(
+            QuestionScreen(
+                "One must take General Insurance Policies",
+                "Agree",
+                "Disagree",
+                "Agree",
+                null
+            )
+        )
+        add(
+            QuestionScreen(
+                " Which of these long-term savings you are aware of?",
+                "Life Insurance",
+                "Fixed deposit",
+                "Life Insurance",
+                null
+            )
+        )
+        add(
+            QuestionScreen(
+                " Would you suggest insurance policies to your friends?",
+                "Yes",
+                "No",
+                "Yes",
+                null
+            )
+        )
+        add(
+            QuestionScreen(
+                "Do you know what is annual premium? ",
+                "amount paid periodically",
+                "offered discount",
+                "amount paid periodically",
+                null
+            )
+        )
+    }
+    private val questionAdapter by lazy {
+        QuestionAdapter(object : QuestionAdapter.clickHandler {
+            override fun onClick(answer: String, index: Int) {
+                setAnswer(index, answer)
+            }
+        }).apply { submitList(list) }
     }
 
     override fun onCreateView(
@@ -26,28 +77,51 @@ class QuestionsFragment : Fragment() {
     ): View? {
         binding = FragmentQuestionsBinding.inflate(layoutInflater, container, false)
         binding.viewPager2.apply {
-            adapter = QuestionAdapter().apply { submitList(list) }
+            adapter = questionAdapter
         }
         return binding.root
+    }
+
+    fun setAnswer(index: Int, answer: String) {
+        val updatedData = list.toMutableList().apply {
+            set(index, get(index).copy(userAnswer = answer))
+        }
+        list = updatedData
+        questionAdapter.submitList(updatedData)
     }
 }
 
 data class QuestionScreen(
     val question: String,
     val option1: String,
-    val option2: String
+    val option2: String,
+    val answer: String,
+    val userAnswer: String?
 )
 
 class QuestionScreenViewHolder(private val binding: ItemQuestionBinding) :
     RecyclerView.ViewHolder(binding.root) {
-    fun bind(model: QuestionScreen) = binding.apply {
+    fun bind(model: QuestionScreen, handler: QuestionAdapter.clickHandler) = binding.apply {
         questionText.text = model.question
         option1Button.text = model.option1
         option2Button.text = model.option2
+        option1Button.setOnClickListener {
+            option1Button.setBackgroundColor(if (option1Button.text == model.answer) Color.GREEN else Color.RED)
+            handler.onClick(model.option1, absoluteAdapterPosition)
+        }
+        option2Button.setOnClickListener {
+            option2Button.setBackgroundColor(if (option2Button.text == model.answer) Color.GREEN else Color.RED)
+            handler.onClick(model.option2, absoluteAdapterPosition)
+        }
     }
 }
 
-class QuestionAdapter : ListAdapter<QuestionScreen, QuestionScreenViewHolder>(CALLBACK) {
+class QuestionAdapter(private val handler: clickHandler) :
+    ListAdapter<QuestionScreen, QuestionScreenViewHolder>(CALLBACK) {
+    interface clickHandler {
+        fun onClick(answer: String, index: Int)
+    }
+
     private companion object {
         val CALLBACK = object : DiffUtil.ItemCallback<QuestionScreen>() {
             override fun areItemsTheSame(
@@ -72,6 +146,6 @@ class QuestionAdapter : ListAdapter<QuestionScreen, QuestionScreenViewHolder>(CA
         )
 
     override fun onBindViewHolder(holder: QuestionScreenViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), handler)
     }
 }
