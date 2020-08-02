@@ -2,6 +2,7 @@ package com.brainbyte.healthareana.ui.questions
 
 import android.app.AlertDialog
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -82,13 +83,13 @@ class QuestionsFragment : Fragment() {
 
             congratsSuggestion.text = ""
         }
-
         questionDialogBuilder.setView(stepUpCongratsScreenBinding.root)
         val questionDialog = questionDialogBuilder.create()
         questionDialog.show()
-
+        questionDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         stepUpCongratsScreenBinding.apply {
             stepUpContinue.setOnClickListener {
+                questionDialog.dismiss()
                 findNavController().navigate(R.id.fragmentSuggestions)
             }
         }
@@ -99,7 +100,7 @@ class QuestionsFragment : Fragment() {
         QuestionAdapter(object : QuestionAdapter.clickHandler {
             override fun onClick(answer: String, index: Int) {
                 setAnswer(index, answer)
-                if(index == binding.viewPager2.adapter?.itemCount) {
+                if(index == (binding.viewPager2.adapter?.itemCount!! - 1 )) {
                     showDialog()
                 }
 

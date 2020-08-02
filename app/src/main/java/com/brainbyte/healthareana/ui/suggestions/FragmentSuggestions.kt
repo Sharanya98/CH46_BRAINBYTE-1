@@ -3,6 +3,7 @@ package com.brainbyte.healthareana.ui.suggestions
 import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
@@ -46,6 +47,7 @@ class FragmentSuggestions : Fragment() {
         contactDialogBuilder.setView(contactPopBinding.root)
 
         val contactDialog = contactDialogBuilder.create()
+        contactDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         contactDialog.show()
     }
 
@@ -77,11 +79,7 @@ class FragmentSuggestions : Fragment() {
                 .popSpan()
                 .append("data indicates that you are at risk for ")
                 .pushSpan(ForegroundColorSpan(Color.RED))
-                .append("diabetes")
-                .popSpan()
-                .append(" and ")
-                .pushSpan(ForegroundColorSpan(Color.RED))
-                .append(" sugar.\n")
+                .append("diabetes.\n")
                 .popSpan()
                 .append("We would strongly recommend you to choose the suggested policy as it is best suited according to your age and income and it will provide good risk coverage for you as well as for your ")
                 .pushSpan(ForegroundColorSpan(Color.RED))
