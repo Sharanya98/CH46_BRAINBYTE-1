@@ -1,28 +1,40 @@
 package com.brainbyte.healthareana.ui.addons
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.coroutineScope
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.brainbyte.healthareana.ChatBotTest
 import com.brainbyte.healthareana.R
 import com.brainbyte.healthareana.databinding.FragmentAddonsBinding
 import com.brainbyte.healthareana.databinding.ItemAddonBinding
+import kotlinx.android.synthetic.main.fragment_addiction_list.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 
+val ADDON_KEY = "addon_key"
 
 class AddonsFragment : Fragment() {
     private lateinit var binding: FragmentAddonsBinding
 
+    private var errorEncountered = 0
     private val addons = listOf(
         AddonModel("AI-ChatBot", R.drawable.ic_app_logo),
         AddonModel("Test App 1", R.drawable.ic_app_logo),
@@ -31,29 +43,56 @@ class AddonsFragment : Fragment() {
         AddonModel("Test App 4", R.drawable.ic_app_logo)
     )
 
-
-    private fun searchInstalledAddons() {
-        val pm: PackageManager = requireActivity().packageManager
-        val packages = pm.getInstalledApplications(PackageManager.GET_META_DATA)
-//        val vlcPackage = packages.filter { it.packageName == "org.videolan.vlc" }.firstOrNull()
-
-//        for (packageInfo in packages) {
-//            Timber.d("Installed package :%s", packageInfo.packageName)
-//            Timber.d("Source dir : %s", packageInfo.sourceDir)
-//            Timber.d("Launch Activity :%s", pm.getLaunchIntentForPackage(packageInfo.packageName)) //
-//        }
-        //        vlcPackage?.let {
-//            startActivity(pm.getLaunchIntentForPackage(it.packageName))
-//        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        searchInstalledAddons()
-    }
-
     private val addonAdapter = AddonAdapter(object : AddonAdapter.clickHandler {
-        override fun onClick() {
+        override fun onClick(index: Int) {
+            if (index == 0) {
+                if (requireActivity().getSharedPreferences(
+                        resources.getString(R.string.app_name),
+                        Context.MODE_PRIVATE
+                    ).getBoolean(ADDON_KEY, false)
+                ) {
+                    startActivity(Intent(requireActivity(), ChatBotTest::class.java))
+                }
+                lifecycle.coroutineScope.launch {
+                    withContext(Dispatchers.Main) {
+                        binding.apply {
+                            progressCircular.visibility = View.VISIBLE
+                            statusIndicator.text = "Fetching Addon..."
+                            delay(4000)
+                            if (errorEncountered == 0) {
+                                progressCircular.visibility = View.GONE
+                                statusIndicator.text = "Error detected. Check your network!"
+                                errorEncountered++
+                            } else {
+                                progressCircular.visibility = View.GONE
+                                statusIndicator.text = "Success"
+                                Toast.makeText(
+                                    requireActivity(),
+                                    "Launching Addon",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                startActivity(
+                                    Intent(
+                                        requireActivity(),
+                                        ChatBotTest::class.java
+                                    )
+                                )
+                                requireActivity().getSharedPreferences(
+                                    resources.getString(R.string.app_name),
+                                    Context.MODE_PRIVATE
+                                ).edit().apply {
+                                    putBoolean(ADDON_KEY, true)
+                                    apply()
+                                }
+                            }
+                        }
+                    }
+                }
+            } else Toast.makeText(
+                requireActivity(),
+                "Unsupported addon requested",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }).apply { submitList(addons) }
 
@@ -80,7 +119,7 @@ data class AddonModel(val title: String, @DrawableRes val icon: Int)
 class AddonAdapter(private val cHandler: clickHandler) :
     ListAdapter<AddonModel, AddonVH>(CALLBACK) {
     interface clickHandler {
-        fun onClick()
+        fun onClick(index: Int)
     }
 
     private companion object {
@@ -107,6 +146,6 @@ class AddonVH(private val binding: ItemAddonBinding) : RecyclerView.ViewHolder(b
     fun bind(model: AddonModel, cHandler: AddonAdapter.clickHandler) = binding.apply {
         addonTitle.text = model.title
         addonLogo.setImageDrawable(ContextCompat.getDrawable(addonLogo.context, model.icon))
-        addonActionButton.setOnClickListener { cHandler.onClick() }
+        addonActionButton.setOnClickListener { cHandler.onClick(absoluteAdapterPosition) }
     }
 }

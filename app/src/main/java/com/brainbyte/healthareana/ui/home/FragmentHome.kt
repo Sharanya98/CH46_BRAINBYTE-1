@@ -2,6 +2,7 @@ package com.brainbyte.healthareana.ui.home
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.brainbyte.healthareana.ChatBotTest
 import com.brainbyte.healthareana.HealthArenaApplication
 import com.brainbyte.healthareana.R
 import com.brainbyte.healthareana.data.local.UserManager
@@ -25,6 +27,7 @@ import com.brainbyte.healthareana.databinding.FragmentBaseBinding
 import com.brainbyte.healthareana.databinding.ItemScoreBinding
 import com.brainbyte.healthareana.databinding.PopIncomeBinding
 import com.brainbyte.healthareana.databinding.PopOccupationBinding
+import com.brainbyte.healthareana.ui.addons.ADDON_KEY
 import com.brainbyte.healthareana.util.Truss
 import com.brainbyte.healthareana.util.USER_SP_KEY
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -113,6 +116,26 @@ class FragmentHome : Fragment() {
             }
 
             fragmentHomeContainer.apply {
+                aiAddonFab.apply {
+                    visibility = if (requireActivity().getSharedPreferences(
+                            resources.getString(R.string.app_name),
+                            Context.MODE_PRIVATE
+                        ).getBoolean(ADDON_KEY, false)
+                    ) {
+                        setOnClickListener {
+                            startActivity(
+                                Intent(
+                                    requireActivity(),
+                                    ChatBotTest::class.java
+                                )
+                            )
+                        }
+                        View.VISIBLE
+                    } else {
+                        View.GONE
+                    }
+                }
+
                 addAddonsFab.setOnClickListener {
                     findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToAddonsFragment())
                 }
