@@ -16,3 +16,8 @@ Health-Arena is an application which can securely collect user data & create awa
 ### Specification
 * minSdkVersion 21 | Android v5.1.0
 * targetSdkVersion 30 | Android v11.0
+
+### Preview
+<img src="preview/s1.png" height="300">
+<img src="preview/s2.png" height="300">
+
