@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_add_24"
             android:id="@+id/add_addons_fab"
+            app:backgroundTint="#ffffff"
             app:layout_constraintBottom_toBottomOf="@id/game_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/game_logo"

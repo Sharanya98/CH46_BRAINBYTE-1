@@ -1,7 +1,9 @@
 package com.brainbyte.healthareana.ui.addons
 
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.ContextMenu
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.brainbyte.healthareana.R
 import com.brainbyte.healthareana.databinding.FragmentAddonsBinding
 import com.brainbyte.healthareana.databinding.ItemAddonBinding
+import timber.log.Timber
+
 
 class AddonsFragment : Fragment() {
     private lateinit var binding: FragmentAddonsBinding
@@ -26,6 +30,27 @@ class AddonsFragment : Fragment() {
         AddonModel("Test App 3", R.drawable.ic_app_logo),
         AddonModel("Test App 4", R.drawable.ic_app_logo)
     )
+
+
+    private fun searchInstalledAddons() {
+        val pm: PackageManager = requireActivity().packageManager
+        val packages = pm.getInstalledApplications(PackageManager.GET_META_DATA)
+//        val vlcPackage = packages.filter { it.packageName == "org.videolan.vlc" }.firstOrNull()
+
+//        for (packageInfo in packages) {
+//            Timber.d("Installed package :%s", packageInfo.packageName)
+//            Timber.d("Source dir : %s", packageInfo.sourceDir)
+//            Timber.d("Launch Activity :%s", pm.getLaunchIntentForPackage(packageInfo.packageName)) //
+//        }
+        //        vlcPackage?.let {
+//            startActivity(pm.getLaunchIntentForPackage(it.packageName))
+//        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        searchInstalledAddons()
+    }
 
     private val addonAdapter = AddonAdapter(object : AddonAdapter.clickHandler {
         override fun onClick() {
