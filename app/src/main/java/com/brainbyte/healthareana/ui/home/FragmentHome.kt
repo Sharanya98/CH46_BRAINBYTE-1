@@ -47,7 +47,7 @@ class FragmentHome : Fragment() {
         ScoreModel(
             R.drawable.ic_bmi_calculator,
             "BMI",
-          123,
+            123,
             100,
             listOf(R.drawable.ic_coin, R.drawable.ic_coin, R.drawable.ic_coin, R.drawable.ic_coin)
         ),
@@ -94,12 +94,16 @@ class FragmentHome : Fragment() {
             }
 
 
-            val userManager = UserManager(requireContext().getSharedPreferences(USER_SP_KEY, Context.MODE_PRIVATE))
+            val userManager = UserManager(
+                requireContext().getSharedPreferences(
+                    USER_SP_KEY,
+                    Context.MODE_PRIVATE
+                )
+            )
 
             val user = userManager.getLoggedInUser()
 
-            if(user.email == "vaidyadevanshu@gmail.com")
-            {
+            if (user.email == "vaidyadevanshu@gmail.com") {
                 playerName.text = "Sharanya Bhongade"
             } else {
                 playerName.text = "Aditya Mahakalkar"
@@ -109,6 +113,9 @@ class FragmentHome : Fragment() {
             }
 
             fragmentHomeContainer.apply {
+                addAddonsFab.setOnClickListener {
+                    findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToAddonsFragment())
+                }
                 bmiGameButton.setOnClickListener {
                     findNavController().navigate(FragmentHomeDirections.actionFragmentHomeToFragmentBMI())
                 }
@@ -135,7 +142,12 @@ class FragmentHome : Fragment() {
             }
 
             logoutBtn.setOnClickListener {
-                val userManager = UserManager(requireContext().getSharedPreferences(USER_SP_KEY, Context.MODE_PRIVATE))
+                val userManager = UserManager(
+                    requireContext().getSharedPreferences(
+                        USER_SP_KEY,
+                        Context.MODE_PRIVATE
+                    )
+                )
                 userManager.logout()
 
                 val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -182,7 +194,12 @@ class FragmentHome : Fragment() {
         occupationPopupBinding.apply {
 
             agriButton.setOnClickListener {
-                it.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryDark))
+                it.setBackgroundColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.colorPrimaryDark
+                    )
+                )
 
             }
 

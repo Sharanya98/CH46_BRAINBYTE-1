@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_fragmentHome_to_fragmentQuestions"
             app:destination="@id/fragmentQuestions" />
+        <action
+            android:id="@+id/action_fragmentHome_to_addonsFragment"
+            app:destination="@id/addonsFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentUserNameSelect"
@@ -251,5 +254,10 @@
         android:name="com.brainbyte.healthareana.ui.sobriety.FragmentAddictionList"
         android:label="FragmentAddictionList"
         tools:layout="@layout/fragment_addiction_list" />
+    <fragment
+        tools:layout="@layout/fragment_addons"
+        android:id="@+id/addonsFragment"
+        android:name="com.brainbyte.healthareana.ui.addons.AddonsFragment"
+        android:label="AddonsFragment" />
 
 </navigation>

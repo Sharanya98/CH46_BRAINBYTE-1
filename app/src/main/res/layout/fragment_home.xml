@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/roundedCardView"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,31 +12,42 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/ic_home_screen_layout">
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_add_24"
+            android:id="@+id/add_addons_fab"
+            app:layout_constraintBottom_toBottomOf="@id/game_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/game_logo"
+            app:layout_constraintTop_toTopOf="@id/game_logo" />
+
         <ImageView
+            android:id="@+id/game_logo"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/ic_game_logo_graphic"
             android:background="@drawable/ic_game_logo_background"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_game_logo_graphic"
+            app:layout_constraintBottom_toTopOf="@id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/guideline2"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="BMI"
-            app:layout_constraintTop_toBottomOf="@id/guideline2"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/bmi_game_button"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline2" />
 
         <ImageButton
             android:id="@+id/bmi_game_button"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:elevation="8dp"
             android:background="@android:color/transparent"
+            android:elevation="8dp"
             android:src="@drawable/ic_bmi_calculator"
             app:layout_constraintBottom_toTopOf="@id/guideline3"
             app:layout_constraintEnd_toEndOf="parent"
@@ -50,25 +60,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_dotted_lines"
-            app:layout_constraintTop_toBottomOf="@id/guideline2"
             app:layout_constraintBottom_toTopOf="@id/guideline3"
-            app:layout_constraintVertical_bias="0"/>
+            app:layout_constraintTop_toBottomOf="@id/guideline2"
+            app:layout_constraintVertical_bias="0" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Step Up"
-            app:layout_constraintTop_toBottomOf="@id/guideline3"
-            app:layout_constraintEnd_toEndOf="@id/step_up_game_button"
             app:layout_constraintBottom_toTopOf="@id/step_up_game_button"
-            app:layout_constraintStart_toStartOf="@id/step_up_game_button" />
+            app:layout_constraintEnd_toEndOf="@id/step_up_game_button"
+            app:layout_constraintStart_toStartOf="@id/step_up_game_button"
+            app:layout_constraintTop_toBottomOf="@id/guideline3" />
 
         <ImageButton
             android:id="@+id/step_up_game_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:elevation="8dp"
             android:background="@android:color/transparent"
+            android:elevation="8dp"
             android:src="@drawable/ic_setup_footsteps"
             app:layout_constraintBottom_toTopOf="@id/guideline4"
             app:layout_constraintEnd_toEndOf="parent"
@@ -90,17 +100,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sobriety"
-            app:layout_constraintTop_toBottomOf="@id/guideline3"
-            app:layout_constraintEnd_toEndOf="@id/sobriety_game_button"
             app:layout_constraintBottom_toTopOf="@id/sobriety_game_button"
-            app:layout_constraintStart_toStartOf="@id/sobriety_game_button"/>
+            app:layout_constraintEnd_toEndOf="@id/sobriety_game_button"
+            app:layout_constraintStart_toStartOf="@id/sobriety_game_button"
+            app:layout_constraintTop_toBottomOf="@id/guideline3" />
 
         <ImageButton
             android:id="@+id/sobriety_game_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:elevation="8dp"
             android:background="@android:color/transparent"
+            android:elevation="8dp"
             android:src="@drawable/ic_soberity_toast"
             app:layout_constraintBottom_toTopOf="@id/guideline4"
             app:layout_constraintEnd_toEndOf="parent"
@@ -113,17 +123,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="StressOMeter"
-            app:layout_constraintTop_toBottomOf="@id/guideline4"
-            app:layout_constraintEnd_toEndOf="@id/stress_game_button"
             app:layout_constraintBottom_toTopOf="@id/stress_game_button"
-            app:layout_constraintStart_toStartOf="@id/stress_game_button" />
+            app:layout_constraintEnd_toEndOf="@id/stress_game_button"
+            app:layout_constraintStart_toStartOf="@id/stress_game_button"
+            app:layout_constraintTop_toBottomOf="@id/guideline4" />
 
         <ImageButton
             android:id="@+id/stress_game_button"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:elevation="8dp"
             android:background="@android:color/transparent"
+            android:elevation="8dp"
             android:src="@drawable/ic_stress_image"
             app:layout_constraintBottom_toTopOf="@id/guideline5"
             app:layout_constraintEnd_toEndOf="parent"
@@ -136,71 +146,71 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_dotted_lines"
-            app:layout_constraintTop_toBottomOf="@id/guideline4"
             app:layout_constraintBottom_toTopOf="@id/guideline5"
-            app:layout_constraintVertical_bias="0"/>
+            app:layout_constraintTop_toBottomOf="@id/guideline4"
+            app:layout_constraintVertical_bias="0" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Power Genes"
-            app:layout_constraintTop_toBottomOf="@id/guideline5"
-            app:layout_constraintEnd_toEndOf="@id/power_gene_game_button"
             app:layout_constraintBottom_toTopOf="@id/power_gene_game_button"
-            app:layout_constraintStart_toStartOf="@id/power_gene_game_button" />
+            app:layout_constraintEnd_toEndOf="@id/power_gene_game_button"
+            app:layout_constraintStart_toStartOf="@id/power_gene_game_button"
+            app:layout_constraintTop_toBottomOf="@id/guideline5" />
 
         <ImageButton
             android:id="@+id/power_gene_game_button"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:elevation="8dp"
             android:background="@android:color/transparent"
+            android:elevation="8dp"
             android:src="@drawable/ic_power_gene_image"
             app:layout_constraintBottom_toTopOf="@id/guideline6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guideline5"
-            app:layout_constraintVertical_bias="1"/>
+            app:layout_constraintVertical_bias="1" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_dotted_lines"
-            app:layout_constraintTop_toBottomOf="@id/guideline5"
             app:layout_constraintBottom_toBottomOf="@id/guideline6"
-            app:layout_constraintVertical_bias="0"/>
+            app:layout_constraintTop_toBottomOf="@id/guideline5"
+            app:layout_constraintVertical_bias="0" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Suggestions"
-            app:layout_constraintTop_toBottomOf="@id/guideline6"
-            app:layout_constraintEnd_toEndOf="@id/suggestion_button"
             app:layout_constraintBottom_toTopOf="@id/suggestion_button"
-            app:layout_constraintStart_toStartOf="@id/suggestion_button" />
+            app:layout_constraintEnd_toEndOf="@id/suggestion_button"
+            app:layout_constraintStart_toStartOf="@id/suggestion_button"
+            app:layout_constraintTop_toBottomOf="@id/guideline6" />
 
         <ImageButton
             android:id="@+id/suggestion_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:elevation="8dp"
             android:background="@android:color/transparent"
+            android:elevation="8dp"
             android:src="@drawable/ic_suggestion_graphic"
             app:layout_constraintBottom_toTopOf="@id/guideline7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guideline6"
-            app:layout_constraintVertical_bias="1"/>
+            app:layout_constraintVertical_bias="1" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_dotted_lines"
-            app:layout_constraintTop_toBottomOf="@id/guideline6"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0"/>
+            app:layout_constraintTop_toBottomOf="@id/guideline6"
+            app:layout_constraintVertical_bias="0" />
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -244,7 +254,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="700dp" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
